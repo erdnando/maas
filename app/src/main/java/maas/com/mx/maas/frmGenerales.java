@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
@@ -38,11 +39,13 @@ public class frmGenerales extends Activity {
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
             Negocio negocio = new Negocio(getApplicationContext());
 
+            cargaCatalogos();
+            configuraCalendario();
+
            if(!this.idSolicitud.toString().equals("0")){
                getActionBar().setTitle(this.idSolicitud.toString());
 
-               cargaCatalogos();
-               configuraCalendario();
+
                //recrea solicitud
                //..........
             }
@@ -108,6 +111,35 @@ public class frmGenerales extends Activity {
             cboitems5 = negocio.CargarCatalogoComun("5");
             MySpinnerAdapter dataAdapter5 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems5);
             cboEstdoDomicilio.setAdapter(dataAdapter5);
+
+
+
+            cboEstdoDomicilio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    try {
+                        String selectedId = ((objectItem)parentView.getItemAtPosition(position)).VALUE.toString();//parentView.getItemAtPosition(position).toString();
+                        Negocio negocio = new Negocio(getApplicationContext());
+                        Spinner cboDelegMunicipio = (Spinner) findViewById(R.id.cboDelegMunicipio);
+                        cboDelegMunicipio.setAdapter(null);
+
+                        String catActivo=negocio.GetBuzonActivo().toString();
+
+                        objectItem[] cboitems;
+                        cboitems = negocio.CargarCatalogoDelegMunicipio(catActivo, selectedId);
+                        MySpinnerAdapter dataAdapter = new MySpinnerAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, cboitems);
+                        cboDelegMunicipio.setAdapter(dataAdapter);
+                    }catch(Exception ex){
+
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
 
             //Estatus residencia domicilio
             Spinner cboEstatusResidenciaDomicilio = (Spinner) findViewById(R.id.cboEstatusResidenciaDomicilio);

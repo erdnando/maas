@@ -548,4 +548,8 @@ public class Negocio  {
 
         return db.CargarCatalogoComun(tipo,GetBuzonActivo().toString());
     }
+
+    public objectItem[] CargarCatalogoDelegMunicipio(String catActivo, String idEstado)throws Exception {
+        return db.CargarCatalogoDelegMunicipio(catActivo,idEstado);
+    }
 }

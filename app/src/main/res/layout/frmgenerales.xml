@@ -32,8 +32,6 @@
         android:focusableInTouchMode="true"
         android:onClick="hideSoftKeyboard"
         >
-
-
         <!--all here-->
         <EditText
             android:layout_width="300dp"
@@ -79,8 +77,6 @@
             android:layout_marginTop="20dp"
             android:hint="@string/lblMaternoGeneral"/>
 
-
-
         <Spinner
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -119,17 +115,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/HOMBRE"
                     android:hint="@string/HOMBRE" />
-
                 <RadioButton
                     android:id="@+id/rdoRadioMujer"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="@string/MUJER" />
-
-
             </RadioGroup>
-
-
 
         <Spinner
             android:layout_width="300dp"
@@ -142,7 +133,6 @@
             android:layout_marginTop="20dp"
             android:prompt="@string/nacionalidad"
             android:spinnerMode="dialog" />
-
 
         <TextView
             android:layout_width="300dp"
@@ -165,7 +155,6 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp" />
 
-
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -176,8 +165,6 @@
             android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
             android:hint="@string/lblRfcGral"/>
-
-
 
         <Spinner
             android:layout_width="300dp"
@@ -202,7 +189,6 @@
             android:layout_marginTop="20dp"
             android:inputType="number"
             android:hint="@string/lblNoDependientes"/>
-
 
         <EditText
             android:layout_width="300dp"
@@ -259,7 +245,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:prompt="@string/estado"
-            android:spinnerMode="dialog" />
+            android:spinnerMode="dialog"
+            />
 
         <Spinner
             android:layout_width="300dp"

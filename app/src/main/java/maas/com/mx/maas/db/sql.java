@@ -457,4 +457,24 @@ public class sql extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("update PARAMETRO set valor='"+buzon+"' where  PARMETRO ='BUZON_ACTIVO'");
     }
+
+    public objectItem[] CargarCatalogoDelegMunicipio(String catActivo, String idEstado) {
+        objectItem[] regreso = new objectItem[0];
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+
+            Cursor c = db.rawQuery("select * from CATALOGO_"+catActivo+" WHERE ID_TIPO_CATALOGO=6 AND PADRE=" + idEstado, null);
+            while (c.moveToNext()) {
+
+                regreso = (objectItem[]) appendValue(regreso, new objectItem(c.getString(0).toString(), c.getString(1).toString()));
+            }
+            c.close();
+        }
+        catch(Exception er){
+            String hh="";
+        }
+
+
+        return regreso;
+    }
 }
