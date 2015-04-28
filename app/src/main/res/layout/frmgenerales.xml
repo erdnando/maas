@@ -42,6 +42,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblNombreSolicitanteGeneral"/>
 
         <EditText
@@ -53,6 +56,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblSegNombreGeneral" />
 
         <EditText
@@ -64,6 +70,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblPaternoGeneral"/>
 
         <EditText
@@ -75,6 +84,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblMaternoGeneral"/>
 
         <Spinner
@@ -98,6 +110,8 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="number"
             android:hint="@string/lblNumIdentificacionGeneral"/>
 
         <RadioGroup
@@ -164,6 +178,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="20dp"
+            android:maxLength="14"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM-"
             android:hint="@string/lblRfcGral"/>
 
         <Spinner
@@ -188,6 +205,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="number"
+            android:maxLength="2"
             android:hint="@string/lblNoDependientes"/>
 
         <EditText
@@ -199,6 +217,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblCalle"/>
 
         <EditText
@@ -210,6 +231,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblNoInt"/>
 
         <EditText
@@ -221,6 +245,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblNoExt"/>
 
         <EditText
@@ -233,6 +260,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="number"
+            android:maxLength="5"
             android:hint="@string/lblCp"/>
 
         <Spinner
@@ -269,6 +297,9 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
+            android:maxLength="50"
+            android:inputType="text"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
             android:hint="@string/lblColonia"/>
 
         <EditText
@@ -281,6 +312,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="number"
+            android:maxLength="2"
             android:hint="@string/lblTiempoResidencia"/>
 
         <Spinner
@@ -304,7 +336,8 @@
             android:layout_marginRight="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
-            android:inputType="number"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
             android:hint="@string/lblMontoVivienda"/>
 
         <EditText
@@ -317,6 +350,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="textEmailAddress"
+            android:maxLength="50"
             android:hint="@string/lblECorreo"/>
 
         <EditText
@@ -329,6 +363,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="phone"
+            android:maxLength="10"
             android:hint="@string/lbltelDomicilio"/>
 
 
@@ -342,6 +377,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:inputType="phone"
+            android:maxLength="10"
             android:hint="@string/lbltelDomicilio"/>
 
         <Spinner
