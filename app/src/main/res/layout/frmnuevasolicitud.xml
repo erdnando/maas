@@ -1,0 +1,236 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="maas.com.mx.maas.frmNuevaSolicitud">
+
+    <TableLayout android:id="@+id/Body"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fondo"
+        android:layout_gravity="fill"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:onClick="hideSoftKeyboard"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnGrales"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblGenerales"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaGenerales"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidaGrales"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnDomicilio"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblDomicilio"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaDomicilio"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidadomicilio"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnDatosEco"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblDatosEco"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaDatosEco"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidaDatosEco"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnPersonaPol"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblPersonaPol"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaPersonaPol"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidaPersonaPol"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnRefFamiliares"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblRefFamiliares"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaRefFamiliares"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidaRefFamiliares"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp">
+            <Button
+                android:layout_width="225dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnDocumentos"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="0dp"
+                android:text="@string/lblDocumentos"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="navegaDocumentos"
+                />
+
+            <ImageButton
+                android:id="@+id/imgValidaDocumentos"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="-35dp"
+                android:src="@drawable/warning"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="-4dp" />
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnGuardar"
+            android:layout_gravity="center"
+            android:layout_marginRight="74dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/lblGuardar"
+            android:background="@layout/button_stylegreen"
+            android:textColor="@drawable/blanco"
+            android:onClick="clickGuardar"
+            />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:id="@+id/btnLimpiar"
+            android:layout_marginRight="74dp"
+            android:layout_marginLeft="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="@string/lblLimpiar"
+            android:background="@layout/button_stylegreen"
+            android:textColor="@drawable/blanco"
+            android:onClick="clickLimpiar"
+            />
+
+    </TableLayout>
+
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />
+
+</LinearLayout>

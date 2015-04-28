@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="maas.com.mx.maas.frmRefFamiliares">
+
+    <TableLayout android:id="@+id/Body"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fondo"
+        android:layout_gravity="fill"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:onClick="hideSoftKeyboard"
+        >
+
+
+    </TableLayout>
+
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />
+
+</LinearLayout>

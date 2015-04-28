@@ -1,0 +1,211 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <TableLayout android:id="@+id/Body"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fondo"
+        android:layout_gravity="fill"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:onClick="hideSoftKeyboard"
+        >
+
+
+
+        <TableLayout android:id="@+id/Titulos"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="7dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/mobileasaservice"
+                android:id="@+id/textView"
+                android:textColor="@drawable/azul"
+                android:textSize="30dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/choro"
+                android:id="@+id/textView2"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/capenvproc"
+                android:id="@+id/textView3"
+                android:layout_marginTop="15dp"
+                android:textSize="15dp" />
+        </TableLayout>
+        <!--formularios-->
+
+        <!--login-->
+        <TableLayout android:id="@+id/login"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-350dp"
+            android:visibility="visible"
+            android:layout_marginLeft="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/lblLogin"
+                android:layout_marginTop="-5dp"
+                android:textColor="#003D7A"
+                android:id="@+id/lblLogin"
+                android:layout_marginLeft="7dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/lblUsuario"
+                android:layout_marginTop="25dp"
+                android:id="@+id/textView4"
+                android:layout_marginLeft="7dp"
+                />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp">
+
+                <EditText
+                    android:layout_width="143dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtUsuario"
+                    android:layout_marginRight="10dp"
+                    android:maxLength="20" />
+
+                <CheckBox
+                    android:id="@+id/checkNuevoPerfil"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nuevoPerfil" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/lblPassword"
+                android:id="@+id/textView5"
+                android:layout_marginLeft="7dp"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:id="@+id/txtPassword"
+                android:layout_marginRight="230dp"
+                android:maxLength="10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/lblEmpresa"
+                android:id="@+id/textView6"
+                android:layout_marginLeft="7dp"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtEmpresa"
+                android:layout_marginRight="230dp"
+                android:maxLength="20"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:id="@+id/btnAcceder"
+                android:layout_marginRight="230dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/lblAcceder"
+                android:background="@layout/button_style"
+                android:textColor="@drawable/blanco"
+                android:onClick="btnLogin"
+                />
+        </TableLayout>
+        <!--login-->
+
+        <!--waitingfor-->
+        <TableLayout android:id="@+id/waitingfor"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-360dp"
+            android:visibility="invisible"
+            android:layout_marginLeft="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/lblsincronizando"
+                android:id="@+id/lblSincronizando"
+                android:layout_marginLeft="7dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/lblnocierre"
+                android:id="@+id/lblNocierre"
+                android:layout_marginLeft="7dp"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="7dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="@string/lbloutput"
+                    android:id="@+id/lblOutput"
+                    android:textColor="@drawable/output" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="150dp"
+                    android:id="@+id/imageViewAnimated"
+                    android:contentDescription="@string/lbloutput"
+                    />
+
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageViewEngranaje"
+                android:contentDescription="@string/lbloutput"
+                android:src="@drawable/engranaje"
+                android:layout_marginLeft="-190dp"
+                android:layout_marginTop="30dp" />
+        </TableLayout>
+        <!--waitingfor-->
+
+        <!--formularios-->
+     </TableLayout>
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />
+</LinearLayout>

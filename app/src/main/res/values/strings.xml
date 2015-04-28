@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MaaS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="mobileasaservice">mobile as a service V 1.0</string>
+    <string name="choro">Mobile as a Service es la aplicación que permite la captura de prospectos.</string>
+    <string name="capenvproc">CAPTURA - ENVIA - PROCESA</string>
+    <string name="lblLogin">login</string>
+    <string name="lblUsuario">Usuario *</string>
+    <string name="lblPassword">Password *</string>
+    <string name="lblEmpresa">Empresa (alias) *</string>
+    <string name="nuevoPerfil">Nuevo perfil</string>
+    <string name="lblAcceder">acceder</string>
+    <string name="title_activity_frm_solicitudes">frmSolicitudes</string>
+    <string name="lblsincronizando">SINCRONIZANDO ...</string>
+    <string name="lblnocierre">No cierre ni desconecte la aplicación mientras sincronize. Esta operación puede tardar algunos minutos.</string>
+    <string name="lbloutput">.....</string>
+    <string name="campoRequerido">Ha dejado vacio algun campo requerido.</string>
+    <string name="urlGif">http://www.indiandefencereview.com/wp-content/themes/idr/images/loading.gif</string>
+    <string name="urlws">"http://74.208.98.86/OriginacionRest/mx.com.homebanking.service.svc/api/"</string>
+    <string name="nodisponible">"Servicio no disponible. Verifique por favor."</string>
+    <string name="usuarioinvalido">"Usuario, empresa y/o contraseña incorrectas. Verifique por favor."</string>
+    <string name="dbpath">"originacionCred.db3"</string>
+    <string name="title_activity_frm_menu_principal">frmMenuPrincipal</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="lblBandeja">Mis solicitudes</string>
+    <string name="lblNewsolicitud">Nueva solicitud</string>
+    <string name="lblConfiguracion">Configuración</string>
+    <string name="lblSalir">Salir</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_frm_bandeja">Bandeja</string>
+    <string name="empty"></string>
+    <string name="menuPrincipal">Menu principal</string>
+    <string name="bandeja">Bandeja</string>
+    <string name="nuevasolicitud">Nueva Solicitud</string>
+    <string name="configuracion">Configuración</string>
+    <string name="lblGenerales">Generales</string>
+    <string name="lblDomicilio">Domicilio</string>
+    <string name="lblDatosEco">Datos económicos</string>
+    <string name="lblPersonaPol">Persona política</string>
+    <string name="lblRefFamiliares">Referencias familiares</string>
+    <string name="lblDocumentos">Documentos</string>
+    <string name="lblGuardar">Guardar</string>
+    <string name="lblLimpiar">Limpiar</string>
+    <string name="Generales">Generales</string>
+    <string name="Domicilio">Domicilio</string>
+    <string name="Datos_eco">Datos Económicos</string>
+    <string name="PersonaPol">Persona Política</string>
+    <string name="RefFamiliares">Referencias Familiares</string>
+    <string name="Documentos">Documentos</string>
+    <string name="lblNombreSolicitanteGeneral">NOMBRE DE SOLICITANTE *</string>
+    <string name="lblSegNombreGeneral">SEGUNDO NOMBRE</string>
+    <string name="lblPaternoGeneral">APELLIDO PATERNO *</string>
+    <string name="lblMaternoGeneral">APELLIDO MATERNO *</string>
+    <string name="seleccionar">Seleccionar ...</string>
+    <string name="lblNumIdentificacionGeneral">NÚMERO DE IDENTIFICACIÓN *</string>
+    <string name="HOMBRE">HOMBRE</string>
+    <string name="MUJER">MUJER</string>
+    <string name="tipoidentificacion">TIPO IDENTIFICACIÓN</string>
+    <string name="nacionalidad">NACIONALIDAD</string>
+    <string name="lblFechaNacimiento">FECHA DE NACIMIENTO</string>
+    <string name="sexo">SEXO</string>
+    <string name="lblRfcGral">RFC *</string>
+    <string name="estadocivil">ESTADO CIVIL</string>
+    <string name="lblNoDependientes">NÚMERO DE DEPENDIENTES</string>
+    <string name="lblCalle">CALLE *</string>
+    <string name="lblNoInt">No INTERIOR</string>
+    <string name="lblNoExt">No EXTERIOR *</string>
+    <string name="lblCp">CP *</string>
+    <string name="estado">ESTADO</string>
+    <string name="delegmunicipio">DELEGACIÓN/MUNICIPIO</string>
+    <string name="lblColonia">COLONIA</string>
+    <string name="lblTiempoResidencia">TIEMPO DE RESIDENCIA *</string>
+    <string name="estatusResidenciaDom">ESTATUS DE RESIDENCIA</string>
+    <string name="lblMontoVivienda">MONTO DE VIVIENDA</string>
+    <string name="lblECorreo">CORREO ELÉCTRONICO *</string>
+    <string name="lbltelDomicilio">TELÉFONO DE CASA *</string>
+    <string name="companiaMovil">COMPAÑÍA MÓVIL *</string>
+
+
+
+
+
+</resources>

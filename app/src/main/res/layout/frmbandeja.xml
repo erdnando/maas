@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fondo"
+    tools:context="maas.com.mx.maas.frmBandeja">
+
+    <LinearLayout android:id="@+id/Header"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="fill">
+        <TextView
+            android:id="@+id/txtMetricaGris"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@layout/gris_circle"
+            android:textAlignment="center"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/txtMetricaVerde"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@layout/verde_circle"
+            android:textAlignment="center"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/txtMetricaAzul"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@layout/azul_circle"
+            android:textAlignment="center"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/txtMetricaRojo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@layout/rojo_circle"
+            android:textAlignment="center"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/txtMetricaAmarillo"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textAlignment="center"
+            android:background="@layout/amarillo_circle"
+            android:gravity="center" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Promotor"
+        android:id="@+id/txtPromotorNombre"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TableLayout android:id="@+id/GridSpace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="fill">
+
+
+    </TableLayout>
+
+<!--
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />-->
+
+</LinearLayout>

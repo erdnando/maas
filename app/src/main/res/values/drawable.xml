@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="gray">#BDBDBD</drawable>
+    <drawable name="azul">#003D7A</drawable>
+    <drawable name="blanco">#FFFFFF</drawable>
+    <drawable name="output">#0083EF</drawable>
+    <drawable name="negro">#000000</drawable>
+    <drawable name="button_pressed">#BDBDBD</drawable>
+    <drawable name="button_focused">#BDBDBD</drawable>
+    <drawable name="button_normal">#003D7A</drawable>
+
+    <drawable name="button_pressedGreen">#31B404</drawable>
+    <drawable name="button_focusedGreen">#31B404</drawable>
+    <drawable name="button_normalgreen">#31B404</drawable>
+
+</resources>

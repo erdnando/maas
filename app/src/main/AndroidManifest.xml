@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="maas.com.mx.maas" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logostefanini"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity
+            android:name=".main"
+            android:configChanges="orientation"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/empty"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".frmSolicitudes"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_frm_solicitudes"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".frmMenuPrincipal"
+            android:configChanges="orientation"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/menuPrincipal"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".frmBandeja"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/bandeja"
+            android:parentActivityName=".frmMenuPrincipal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmMenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".frmNuevaSolicitud"
+            android:configChanges="orientation"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/nuevasolicitud"
+            android:parentActivityName=".frmMenuPrincipal"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmMenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".frmConfiguracion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/configuracion"
+            android:parentActivityName=".frmMenuPrincipal" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmMenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".frmGenerales"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/Generales"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmDomicilio"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/Domicilio"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmDatosEco"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/Datos_eco"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmPersonaPol"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/PersonaPol"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmRefFamiliares"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/RefFamiliares"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmDocumentos"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/logostefanini"
+            android:label="@string/Documentos"
+            android:parentActivityName=".frmNuevaSolicitud">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmNuevaSolicitud" />
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+
+</manifest>

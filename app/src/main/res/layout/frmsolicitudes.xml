@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TableLayout android:id="@+id/Header"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/gray">
+
+    </TableLayout>
+
+    <TableLayout android:id="@+id/Body"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fondo"
+        android:layout_gravity="fill"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:onClick="hideSoftKeyboard"
+        >
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:id="@+id/imageViewTest"
+             />
+
+        </TableLayout>
+
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />
+</LinearLayout>

@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="maas.com.mx.maas.frmMenuPrincipal">
+
+  <!--  <TableLayout android:id="@+id/Header"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/gray">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/logostefanini"
+            android:layout_marginLeft="-290dp" />
+
+    </TableLayout>-->
+
+    <TableLayout android:id="@+id/Body"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/fondo"
+        android:layout_gravity="fill"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:onClick="hideSoftKeyboard"
+        >
+
+        <RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mobile as a service v.1.0"
+                android:textSize="27dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView"
+                android:textIsSelectable="true"
+                android:textColor="#003D7A" />
+
+            <Button
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnBandeja"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:text="@string/lblBandeja"
+            android:background="@layout/button_style"
+            android:textColor="@drawable/blanco"
+            android:onClick="btnBandeja"
+            />
+
+        <TextView
+            android:id="@+id/txtCountSolicitudes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/btnBandeja"
+            android:layout_alignRight="@id/btnBandeja"
+            android:text="0"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="-20dp"
+            android:background="@layout/badge_circle" />
+        </RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btnNewSolicitud"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/lblNewsolicitud"
+            android:background="@layout/button_style"
+            android:textColor="@drawable/blanco"
+            android:onClick="btnNewsolicitud"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btnConfiguracion"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/lblConfiguracion"
+            android:background="@layout/button_style"
+            android:textColor="@drawable/blanco"
+            android:onClick="btnConfiguracion"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btnSalir"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/lblSalir"
+            android:background="@layout/button_style"
+            android:textColor="@drawable/blanco"
+            android:onClick="btnSalir"
+            />
+
+    </TableLayout>
+
+    <TableLayout android:id="@+id/Footer"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="-45px"
+        android:layout_height="30dp"
+        android:background="@drawable/gray"
+        />
+
+</LinearLayout>
