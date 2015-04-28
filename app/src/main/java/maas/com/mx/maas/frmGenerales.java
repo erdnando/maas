@@ -80,7 +80,7 @@ public class frmGenerales extends Activity {
         try {
             Negocio negocio = new Negocio(getApplicationContext());
 
-            //Identificaciones...
+            //Identificaciones... ...
             Spinner cboIdentificacionGeneral = (Spinner) findViewById(R.id.cboIdentificacionGeneral);
             objectItem[]  cboitems2;
             cboitems2 = negocio.CargarCatalogoComun("2");
