@@ -3,9 +3,12 @@ package maas.com.mx.maas.negocio;
 import android.content.Context;
 import android.media.MediaScannerConnection;
 import android.text.Editable;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.javeros.anonimos.code.Rfc;
+import com.javeros.anonimos.code.dto.PersonaRfcDto;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -550,6 +553,19 @@ public class Negocio  {
     }
 
     public objectItem[] CargarCatalogoDelegMunicipio(String catActivo, String idEstado)throws Exception {
-        return db.CargarCatalogoDelegMunicipio(catActivo,idEstado);
+        return db.CargarCatalogoDelegMunicipio(catActivo, idEstado);
+    }
+
+    public String RFC13Pocisiones(String paterno, String materno, String nombre, String strFecha)throws Exception {
+
+        Rfc r=new Rfc();
+        PersonaRfcDto persona=new PersonaRfcDto();
+        persona.setNombre(nombre);
+        persona.setApPaterno(paterno);
+        persona.setApMaterno(materno);
+        persona.setFecha(strFecha);
+
+        return r.generarRfc(persona);
+
     }
 }

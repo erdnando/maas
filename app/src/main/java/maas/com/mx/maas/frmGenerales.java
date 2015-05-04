@@ -70,47 +70,53 @@ public class frmGenerales extends Activity {
         //EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
-        txtNombreSolicitanteGeneral.addTextChangedListener(new TextWatcher(){
-
-            public void afterTextChanged(Editable s) {
-                 generaRFC();
-
+        txtNombreSolicitanteGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    generaRFC();
+                }
             }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
         });
 
         EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
-        txtPaternoGeneral.addTextChangedListener(new TextWatcher(){
-
-            public void afterTextChanged(Editable s) {
-                generaRFC();
-
+        txtPaternoGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    generaRFC();
+                }
             }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
         });
 
         EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
-        txtMaternoGeneral.addTextChangedListener(new TextWatcher(){
-
-            public void afterTextChanged(Editable s) {
-                generaRFC();
-
+        txtMaternoGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    generaRFC();
+                }
             }
+        });
 
-
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-            public void onTextChanged(CharSequence s, int start, int before, int count){}
+        DatePicker dateFechaNacGeneralX = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
+        dateFechaNacGeneralX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    generaRFC();
+                }
+            }
         });
 
 
     }
 
     private void generaRFC() {
+
+        EditText txtRFC = (EditText) findViewById(R.id.txtRFCGeneral);
         try {
-            EditText txtRFC = (EditText) findViewById(R.id.txtRFCGeneral);
+
 
             EditText txtNombre = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
             EditText txtPaterno = (EditText) findViewById(R.id.txtPaternoGeneral);
@@ -119,15 +125,12 @@ public class frmGenerales extends Activity {
 
             Negocio negocio = new Negocio(getApplicationContext());
 
-            String strFecha = Integer.toString(txtFechaNac.getYear()).toString().substring(2, 2) + "/" + getNumero(txtFechaNac.getMonth()) + "/" + getNumero(txtFechaNac.getDayOfMonth());
+            String strFecha = Integer.toString(txtFechaNac.getYear()).toString() + getNumero(txtFechaNac.getMonth()+1) + getNumero(txtFechaNac.getDayOfMonth());
             txtRFC.setText(negocio.RFC13Pocisiones(txtPaterno.getText().toString().toUpperCase(), txtMaterno.getText().toString().toUpperCase(), txtNombre.getText().toString().toUpperCase(), strFecha));
-            //dateFechaNacGeneralX
-            //txtMaternoGeneral
-            //txtPaternoGeneral
-            //txtNombreSolicitanteGeneral
+
         }catch(Exception ex){
 
-
+            txtRFC.setText("Incompleto");
         }
 
     }
