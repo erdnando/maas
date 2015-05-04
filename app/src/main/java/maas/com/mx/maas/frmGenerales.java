@@ -31,9 +31,11 @@ import java.util.Calendar;
 import maas.com.mx.maas.entidades.MySpinnerAdapter;
 import maas.com.mx.maas.entidades.objectItem;
 import maas.com.mx.maas.negocio.Negocio;
+import android.os.AsyncTask;
+import android.os.Bundle;
 
-public class frmGenerales extends Activity {
-
+public class frmGenerales extends Activity  {
+//Erdnando1 github
     String idSolicitud="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,16 +101,44 @@ public class frmGenerales extends Activity {
             }
         });
 
-        DatePicker dateFechaNacGeneralX = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
-        dateFechaNacGeneralX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+       // DatePicker dateFechaNacGeneralX = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
+
+
+//implements DatePicker.OnDateChangedListener
+
+       /* dateFechaNacGeneralX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     generaRFC();
                 }
             }
-        });
+        });*/
 
+
+    }
+
+    private String strGeneraRFC() {
+
+        EditText txtRFC = (EditText) findViewById(R.id.txtRFCGeneral);
+        try {
+
+
+            EditText txtNombre = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
+            EditText txtPaterno = (EditText) findViewById(R.id.txtPaternoGeneral);
+            EditText txtMaterno = (EditText) findViewById(R.id.txtMaternoGeneral);
+            DatePicker txtFechaNac = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
+
+            Negocio negocio = new Negocio(getApplicationContext());
+
+            String strFecha = Integer.toString(txtFechaNac.getYear()).toString() + getNumero(txtFechaNac.getMonth()+1) + getNumero(txtFechaNac.getDayOfMonth());
+            //txtRFC.setText(negocio.RFC13Pocisiones(txtPaterno.getText().toString().toUpperCase(), txtMaterno.getText().toString().toUpperCase(), txtNombre.getText().toString().toUpperCase(), strFecha));
+
+            return negocio.RFC13Pocisiones(txtPaterno.getText().toString().toUpperCase(), txtMaterno.getText().toString().toUpperCase(), txtNombre.getText().toString().toUpperCase(), strFecha);
+        }catch(Exception ex){
+
+            return "Incompleto";
+        }
 
     }
 
@@ -156,8 +186,18 @@ public class frmGenerales extends Activity {
         day = c.get(Calendar.DAY_OF_MONTH);
 
         dpResult.setCalendarViewShown(false);
-        // set current date into datepicker
-        dpResult.init(year, month, day, null);
+
+
+
+        DatePicker.OnDateChangedListener onDateChanged=new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int i, int i2, int i3) {
+                AsyncTaskGeneraRFC runner = new AsyncTaskGeneraRFC();
+                runner.execute("");
+            }
+        };
+
+        dpResult.init(year, month+1, day, onDateChanged);
     }
 
     private void cargaCatalogos() {
@@ -310,6 +350,65 @@ public class frmGenerales extends Activity {
             this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
+
+
+   private class AsyncTaskGeneraRFC extends AsyncTask<String, String, String> {
+
+       private String resp;
+
+       @Override
+       protected String doInBackground(String... params) {
+          // publishProgress("Sleeping..."); // Calls onProgressUpdate()
+           try {
+               // Do your long operations here and return the result
+               //int time = Integer.parseInt(params[0]);
+               resp=strGeneraRFC();
+              // publishProgress(resp);
+           } catch (Exception e) {
+               e.printStackTrace();
+               resp = e.getMessage();
+           }
+
+           return resp;
+       }
+
+       /*
+        * (non-Javadoc)
+        *
+        * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+        */
+       @Override
+       protected void onPostExecute(String result) {
+           // execution of result of Long time consuming operation
+           EditText txtRFC = (EditText) findViewById(R.id.txtRFCGeneral);
+           txtRFC.setText(result);
+
+       }
+
+       /*
+        * (non-Javadoc)
+        *
+        * @see android.os.AsyncTask#onPreExecute()
+        */
+       @Override
+       protected void onPreExecute() {
+           // Things to be done before execution of long running operation. For
+           // example showing ProgessDialog
+       }
+
+       /*
+        * (non-Javadoc)
+        *
+        * @see android.os.AsyncTask#onProgressUpdate(Progress[])
+        */
+       @Override
+       protected void onProgressUpdate(String... text) {
+           //finalResult.setText(text[0]);
+           // Things to be done while execution of long running operation is in
+           // progress. For example updating ProgessDialog
+       }
+   }
+
 
 
 
