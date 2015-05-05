@@ -1,5 +1,6 @@
 package maas.com.mx.maas;
 
+import maas.com.mx.maas.entidades.Solicitud;
 import maas.com.mx.maas.negocio.Negocio;
 import maas.com.mx.maas.util.SystemUiHider;
 
@@ -26,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 
 import maas.com.mx.maas.R;
@@ -51,7 +54,7 @@ public class frmMenuPrincipal extends Activity {
         setContentView(R.layout.frmmenuprincipal);
 
         try{
-            Intent i= getIntent();
+            //Intent i= getIntent();
             this.user= getIntent().getStringExtra("User");
             this.compania= getIntent().getStringExtra("Compania");
             this.logeado= getIntent().getStringExtra("Logeado");
@@ -108,6 +111,14 @@ public class frmMenuPrincipal extends Activity {
         SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
         SharedPreferences.Editor editor = preferencesx.edit();
         editor.putString("idSolicitud","0");
+
+        Gson gson = new Gson();
+        Solicitud objSol=new Solicitud();
+        objSol.Nombre="Erdnando";
+        String strObjSol = gson.toJson(objSol);
+
+        editor.putString("strObjSol", strObjSol);
+
         editor.apply();
 
         startActivity(myIntent);

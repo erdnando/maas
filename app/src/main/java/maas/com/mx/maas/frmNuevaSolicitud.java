@@ -15,7 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import maas.com.mx.maas.R;
+import maas.com.mx.maas.entidades.Solicitud;
 import maas.com.mx.maas.negocio.Negocio;
 
 public class frmNuevaSolicitud extends Activity {
@@ -26,22 +29,41 @@ public class frmNuevaSolicitud extends Activity {
         setContentView(R.layout.frmnuevasolicitud);
 
         try{
-            Intent i= getIntent();
+           // Intent i= getIntent();
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
             Negocio negocio = new Negocio(getApplicationContext());
 
             SharedPreferences prfs = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
             String _idSolicitud = prfs.getString("idSolicitud", "");
 
+            //aqui debe decir de donde viene, 1o de menu principal y luego de generales
+            String strObjSol = prfs.getString("strObjSol", "");
+            Gson gson = new Gson();
+            Solicitud objSol=gson.fromJson(strObjSol, Solicitud.class);
+            //aqui debe llegar elobjeto cargado
+
             if(_idSolicitud==null)return;
             if(this.idSolicitud==null){
                 this.idSolicitud=_idSolicitud;
             }
 
+             //---------------------------------------
+            SharedPreferences preferencesxx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
+            SharedPreferences.Editor editorxx = preferencesxx.edit();
+            //Gson gson = new Gson();
+           // Solicitud objSol=new Solicitud();
+            objSol.Color="Azul";
+            strObjSol = gson.toJson(objSol);
+            editorxx.putString("strObjSol", strObjSol);
+            editorxx.apply();
+            //---------------------------------
+
+
             //update selected solicitud
             if(!this.idSolicitud.toString().equals("0")){
                  if(_idSolicitud!=this.idSolicitud){
                      _idSolicitud=this.idSolicitud;
+
                      SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
                      SharedPreferences.Editor editor = preferencesx.edit();
                      editor.putString("idSolicitud",this.idSolicitud.toString());

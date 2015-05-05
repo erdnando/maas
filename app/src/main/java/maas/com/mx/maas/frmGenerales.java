@@ -3,7 +3,9 @@ package maas.com.mx.maas;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,10 +34,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import maas.com.mx.maas.entidades.MySpinnerAdapter;
+import maas.com.mx.maas.entidades.Solicitud;
 import maas.com.mx.maas.entidades.objectItem;
 import maas.com.mx.maas.negocio.Negocio;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import com.google.gson.Gson;
 
 public class frmGenerales extends Activity  {
 //Erdnando1 github
@@ -49,12 +54,33 @@ public class frmGenerales extends Activity  {
         try{
             Intent i= getIntent();
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
+            //-------------------------------------------------
+            SharedPreferences prfs = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
+            String _idSolicitud = prfs.getString("idSolicitud", "");
+            String strObjSol = prfs.getString("strObjSol", "");
+            Gson gson = new Gson();
+            Solicitud objSol=gson.fromJson(strObjSol, Solicitud.class);
+            //----------------------------------------------
+
             Negocio negocio = new Negocio(getApplicationContext());
             cargaCatalogos();
             configuraCalendario();
             configuraRfc();
             configuraControlesRequeridos();
             validaEstatus();
+
+
+
+            SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
+            SharedPreferences.Editor editor = preferencesx.edit();
+            editor.putString("erdnando","generales");
+
+            objSol.Comentario="hasta generales";
+            strObjSol = gson.toJson(objSol);
+            editor.putString("strObjSol", strObjSol);
+
+            editor.apply();
+
 
            if(!this.idSolicitud.toString().equals("0")){
                getActionBar().setTitle(this.idSolicitud.toString());
