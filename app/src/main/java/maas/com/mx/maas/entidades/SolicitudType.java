@@ -7,6 +7,16 @@ public class SolicitudType {
 
     public SolicitudType()
     {
+        this.generales=new Generales();
+        this.Promotor=new Promotor();
+        this.domicilio=new Domicilio();
+        this.Resp=new Respuesta();
+        this.Deconominos=new DatosEco();
+        this.Personapolitica=new Personapol();
+        this.Refer=new Referencias();
+        this.Refer2=new Referencias();
+        this.Refer3=new Referencias();
+        this.doc=new Documento();
     }
     public Promotor Promotor;
     public Generales generales;

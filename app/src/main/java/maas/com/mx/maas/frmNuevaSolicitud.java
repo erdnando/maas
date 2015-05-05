@@ -35,8 +35,11 @@ public class frmNuevaSolicitud extends Activity {
         setContentView(R.layout.frmnuevasolicitud);
         preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
 
+
         try{
+            Negocio negocio = new Negocio(getApplicationContext());
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
+
 
             if(this.idSolicitud==null) {
                 this.idSolicitud = preferences.getString("idSolicitud", "");
@@ -48,14 +51,20 @@ public class frmNuevaSolicitud extends Activity {
 
             Gson gson = new Gson();
             if(!this.idSolicitud.toString().equals("0")) {
+
+
                 getActionBar().setTitle(this.idSolicitud.toString());
 
+                this.objSolicitud=preferences.getString("objSolicitud", "");
 
-                objSol=new SolicitudType();
+                if(this.objSolicitud==""){
                 //get from db .......
+                objSol=negocio.getSolicitud(this.idSolicitud);
+
                 this.objSolicitud = gson.toJson(objSol);
                 editor.putString("objSolicitud", this.objSolicitud);
                 editor.apply();
+                }
 
             }else{
                 this.objSolicitud = preferences.getString("objSolicitud", "");
@@ -172,10 +181,5 @@ public class frmNuevaSolicitud extends Activity {
         // Do Here what ever you want do on back press;
     }
 
-   /* @Override
-    protected void onPause() {
-        super.onPause();
 
-
-    }*/
 }

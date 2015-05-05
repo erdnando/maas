@@ -480,8 +480,8 @@ public class sql extends SQLiteOpenHelper {
     }
 
     public SolicitudType GetSolicitud(String idSolicitud, String tipo) {
+
         SolicitudType objSol=new SolicitudType();
-        //Solicitud sol=new Solicitud();
         String strXml="";
 
         SQLiteDatabase sql = getReadableDatabase();
@@ -506,12 +506,110 @@ public class sql extends SQLiteOpenHelper {
                 XPathFactory xpathFactory = XPathFactory.newInstance();
                 XPath xpath = xpathFactory.newXPath();
 
+                objSol.generales.Tpoidentif= xpath.evaluate("/SolicitudType/generales/Tpoidentif", document);
+                objSol.generales.Noidenficacion= xpath.evaluate("/SolicitudType/generales/Noidenficacion", document);
                 objSol.generales.Pmrnombre = xpath.evaluate("/SolicitudType/generales/Pmrnombre", document);
                 objSol.generales.Sdonombre = xpath.evaluate("/SolicitudType/generales/Sdonombre", document);
                 objSol.generales.Apaterno = xpath.evaluate("/SolicitudType/generales/Apaterno", document);
                 objSol.generales.Amaterno = xpath.evaluate("/SolicitudType/generales/Amaterno", document);
+                objSol.generales.Sexo= xpath.evaluate("/SolicitudType/generales/Sexo", document);
+                objSol.generales.Nacionalidad= xpath.evaluate("/SolicitudType/generales/Nacionalidad", document);
+                objSol.generales.Fechanacdia= xpath.evaluate("/SolicitudType/generales/Fechanacdia", document);
+                objSol.generales.Rfc= xpath.evaluate("/SolicitudType/generales/Rfc", document);
+                objSol.generales.Edocivil= xpath.evaluate("/SolicitudType/generales/Edocivil", document);
+                objSol.generales.Nodependiente= xpath.evaluate("/SolicitudType/generales/Nodependiente", document);
+                objSol.generales.Cveperspol= xpath.evaluate("/SolicitudType/generales/Cveperspol", document);
+                objSol.generales.FechasnacMes= xpath.evaluate("/SolicitudType/generales/FechasnacMes", document);
+                objSol.generales.FechanacAnio= xpath.evaluate("/SolicitudType/generales/FechanacAnio", document);
 
+                objSol.doc.IdentificacionFrentePath= xpath.evaluate("/SolicitudType/doc/IdentificacionFrentePath", document);
+                objSol.doc.IdentificacionAtrasPath= xpath.evaluate("/SolicitudType/doc/IdentificacionAtrasPath", document);
+                objSol.doc.Contrato1Path= xpath.evaluate("/SolicitudType/doc/Contrato1Path", document);
+                objSol.doc.Contrato2Path= xpath.evaluate("/SolicitudType/doc/Contrato2Path", document);
+                objSol.doc.FirmaPath= xpath.evaluate("/SolicitudType/doc/FirmaPath", document);
+                objSol.doc.Extra1= xpath.evaluate("/SolicitudType/doc/Extra1", document);
+                objSol.doc.Extra2= xpath.evaluate("/SolicitudType/doc/Extra2", document);
+                objSol.doc.Extra3= xpath.evaluate("/SolicitudType/doc/Extra3", document);
+                objSol.doc.Extra4= xpath.evaluate("/SolicitudType/doc/Extra4", document);
+                objSol.doc.Extra5= xpath.evaluate("/SolicitudType/doc/Extra5", document);
 
+                objSol.domicilio.Calle= xpath.evaluate("/SolicitudType/domicilio/Calle", document);
+                objSol.domicilio.NoInt= xpath.evaluate("/SolicitudType/domicilio/NoInt", document);
+                objSol.domicilio.NoExt= xpath.evaluate("/SolicitudType/domicilio/NoExt", document);
+                objSol.domicilio.Cpdom= xpath.evaluate("/SolicitudType/domicilio/Cpdom", document);
+                objSol.domicilio.Estado= xpath.evaluate("/SolicitudType/domicilio/Estado", document);
+                objSol.domicilio.Delegacion= xpath.evaluate("/SolicitudType/domicilio/Delegacion", document);
+                objSol.domicilio.Colonia= xpath.evaluate("/SolicitudType/domicilio/Colonia", document);
+                objSol.domicilio.TiempoResidencia= xpath.evaluate("/SolicitudType/domicilio/TiempoResidencia", document);
+                objSol.domicilio.EstatusResidencia= xpath.evaluate("/SolicitudType/domicilio/EstatusResidencia", document);
+                objSol.domicilio.MontoVivienda= xpath.evaluate("/SolicitudType/domicilio/MontoVivienda", document);
+                objSol.domicilio.Email= xpath.evaluate("/SolicitudType/domicilio/Email", document);
+                objSol.domicilio.Telcasa= xpath.evaluate("/SolicitudType/domicilio/Telcasa", document);
+                objSol.domicilio.Telmovil= xpath.evaluate("/SolicitudType/domicilio/Telmovil", document);
+                objSol.domicilio.CompaniaMovil= xpath.evaluate("/SolicitudType/domicilio/CompaniaMovil", document);
+
+                objSol.Personapolitica.TipoParentesco= xpath.evaluate("/SolicitudType/Personapolitica/TipoParentesco", document);
+                objSol.Personapolitica.Descfuncion= xpath.evaluate("/SolicitudType/Personapolitica/Descfuncion", document);
+                objSol.Personapolitica.Descparentesco= xpath.evaluate("/SolicitudType/Personapolitica/Descparentesco", document);
+                objSol.Personapolitica.TieneParentesco= xpath.evaluate("/SolicitudType/Personapolitica/TieneParentesco", document);
+                objSol.Personapolitica.EsPersonaPolitica= xpath.evaluate("/SolicitudType/Personapolitica/EsPersonaPolitica", document);
+
+                objSol.Refer.Pmrnombre= xpath.evaluate("/SolicitudType/Refer/Pmrnombre", document);
+                objSol.Refer.Sdonombre= xpath.evaluate("/SolicitudType/Refer/Sdonombre", document);
+                objSol.Refer.Apaterno= xpath.evaluate("/SolicitudType/Refer/Apaterno", document);
+                objSol.Refer.Amaterno= xpath.evaluate("/SolicitudType/Refer/Amaterno", document);
+                objSol.Refer.Nacionalidad= xpath.evaluate("/SolicitudType/Refer/Nacionalidad", document);
+                objSol.Refer.TelefonoCasa= xpath.evaluate("/SolicitudType/Refer/TelefonoCasa", document);
+
+                objSol.Refer2.Pmrnombre= xpath.evaluate("/SolicitudType/Refer2/Pmrnombre", document);
+                objSol.Refer2.Sdonombre= xpath.evaluate("/SolicitudType/Refer2/Sdonombre", document);
+                objSol.Refer2.Apaterno= xpath.evaluate("/SolicitudType/Refer2/Apaterno", document);
+                objSol.Refer2.Amaterno= xpath.evaluate("/SolicitudType/Refer2/Amaterno", document);
+                objSol.Refer2.Nacionalidad= xpath.evaluate("/SolicitudType/Refer2/Nacionalidad", document);
+                objSol.Refer2.TelefonoCasa= xpath.evaluate("/SolicitudType/Refer2/TelefonoCasa", document);
+
+                objSol.Refer3.Pmrnombre= xpath.evaluate("/SolicitudType/Refer3/Pmrnombre", document);
+                objSol.Refer3.Sdonombre= xpath.evaluate("/SolicitudType/Refer3/Sdonombre", document);
+                objSol.Refer3.Apaterno= xpath.evaluate("/SolicitudType/Refer3/Apaterno", document);
+                objSol.Refer3.Amaterno= xpath.evaluate("/SolicitudType/Refer3/Amaterno", document);
+                objSol.Refer3.Nacionalidad= xpath.evaluate("/SolicitudType/Refer3/Nacionalidad", document);
+                objSol.Refer3.TelefonoCasa= xpath.evaluate("/SolicitudType/Refer3/TelefonoCasa", document);
+
+                objSol.Promotor.Compania= xpath.evaluate("/SolicitudType/Promotor/Compania", document);
+                objSol.Promotor.Usuario= xpath.evaluate("/SolicitudType/Promotor/Usuario", document);
+                objSol.Promotor.Contrasenia= xpath.evaluate("/SolicitudType/Promotor/Contrasenia", document);
+
+                objSol.FolioLocal= xpath.evaluate("/SolicitudType/FolioLocal", document);
+                objSol.DiaCreacion= xpath.evaluate("/SolicitudType/DiaCreacion", document);
+                objSol.MesCreacion= xpath.evaluate("/SolicitudType/MesCreacion", document);
+                objSol.AnioCreacion= xpath.evaluate("/SolicitudType/AnioCreacion", document);
+
+                objSol.Deconominos.TipoContrato= xpath.evaluate("/SolicitudType/Deconominos/TipoContrato", document);
+                objSol.Deconominos.AntiguedadEmpleo= xpath.evaluate("/SolicitudType/Deconominos/AntiguedadEmpleo", document);
+                objSol.Deconominos.AniosCasada= xpath.evaluate("/SolicitudType/Deconominos/AniosCasada", document);
+                objSol.Deconominos.Ingresos= xpath.evaluate("/SolicitudType/Deconominos/Ingresos", document);
+                objSol.Deconominos.NombreEmpresa= xpath.evaluate("/SolicitudType/Deconominos/NombreEmpresa", document);
+                objSol.Deconominos.GiroEmpresa= xpath.evaluate("/SolicitudType/Deconominos/GiroEmpresa", document);
+                objSol.Deconominos.Puesto= xpath.evaluate("/SolicitudType/Deconominos/Puesto", document);
+
+                objSol.Deconominos.Domicilio.Calle= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Calle", document);
+                objSol.Deconominos.Domicilio.NoInt= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/NoInt", document);
+                objSol.Deconominos.Domicilio.NoExt= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/NoExt", document);
+                objSol.Deconominos.Domicilio.Cpdom= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Cpdom", document);
+                objSol.Deconominos.Domicilio.Estado= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Estado", document);
+                objSol.Deconominos.Domicilio.Delegacion= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Delegacion", document);
+                objSol.Deconominos.Domicilio.Colonia= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Colonia", document);
+                objSol.Deconominos.Domicilio.TiempoResidencia= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/TiempoResidencia", document);
+                objSol.Deconominos.Domicilio.EstatusResidencia= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/EstatusResidencia", document);
+                objSol.Deconominos.Domicilio.MontoVivienda= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/MontoVivienda", document);
+                objSol.Deconominos.Domicilio.Telcasa= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Telcasa", document);
+                objSol.Deconominos.Domicilio.Telmovil= xpath.evaluate("/SolicitudType/Deconominos/Domicilio/Telmovil", document);
+
+                objSol.Deconominos.OtrosIngresos= xpath.evaluate("/SolicitudType/Deconominos/OtrosIngresos", document);
+                objSol.Deconominos.FuenteOtrosIngresos= xpath.evaluate("/SolicitudType/Deconominos/FuenteOtrosIngresos", document);
+
+                objSol.Lattitude= xpath.evaluate("/SolicitudType/Lattitude", document);
+                objSol.Longuitud= xpath.evaluate("/SolicitudType/Longuitud", document);
 
             }catch(Exception ex){
 

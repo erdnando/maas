@@ -1,47 +1,35 @@
 package maas.com.mx.maas;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+
 import java.util.Calendar;
 
 import maas.com.mx.maas.entidades.MySpinnerAdapter;
-import maas.com.mx.maas.entidades.Solicitud;
 import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.entidades.objectItem;
 import maas.com.mx.maas.negocio.Negocio;
-import android.os.AsyncTask;
-import android.os.Bundle;
-
-import com.google.gson.Gson;
 
 public class frmGenerales extends Activity  {
 //Erdnando1 github
@@ -64,7 +52,7 @@ public class frmGenerales extends Activity  {
             preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
             //----------------------------------------------
 
-            Negocio negocio = new Negocio(getApplicationContext());
+            //Negocio negocio = new Negocio(getApplicationContext());
             cargaCatalogos();
             configuraCalendario();
             configuraRfc();
@@ -73,17 +61,19 @@ public class frmGenerales extends Activity  {
             Gson gson = new Gson();
 
             //just from bandeja scenario
-            if(objSolicitud=="db"){
+            /*if(objSolicitud=="db"){
                 objSol=negocio.getSolicitud(this.idSolicitud);
-            }
+            }*/
 
             objSol=gson.fromJson(objSolicitud, SolicitudType.class);
             cargaFormulario(objSol);
 
             validaEstatus();
 
-           if(!this.idSolicitud.toString().equals("0")){
-               getActionBar().setTitle(this.idSolicitud.toString());
+           if(!this.idSolicitud.equals("0")){
+               if(getActionBar()!=null) {
+                   getActionBar().setTitle(this.idSolicitud);
+               }
             }
 
         }catch(Exception ex){
