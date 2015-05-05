@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,10 +86,19 @@ public class frmGenerales extends Activity  {
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
         txtNombreSolicitanteGeneral.setText(objSol.generales.Pmrnombre);
+
+        EditText txtSegNombreGeneral = (EditText) findViewById(R.id.txtSegNombreGeneral);
+        txtSegNombreGeneral.setText(objSol.generales.Sdonombre);
+
         EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
         txtPaternoGeneral.setText(objSol.generales.Apaterno);
+
         EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
         txtMaternoGeneral.setText(objSol.generales.Amaterno);
+
+        Spinner cboIdentificacionGeneral = (Spinner) findViewById(R.id.cboIdentificacionGeneral);
+        SelectSpinnerItemByValue(cboIdentificacionGeneral, objSol.generales.Tpoidentif );
+
         EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
 
         RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
@@ -111,6 +121,19 @@ public class frmGenerales extends Activity  {
 
         EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
 
+    }
+
+    public static void SelectSpinnerItemByValue(Spinner spnr, String value)
+    {
+        MySpinnerAdapter adapter = (MySpinnerAdapter) spnr.getAdapter();
+        for (int position = 0; position < adapter.getCount(); position++)
+        {
+            if( ((objectItem) adapter.getItem(position)).VALUE.equals(value)  )
+            {
+                spnr.setSelection(position);
+                return;
+            }
+        }
     }
 
     private void configuraControlesRequeridos() {
