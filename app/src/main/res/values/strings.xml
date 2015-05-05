@@ -78,6 +78,7 @@
     <string name="lblMontoVivienda">MONTO DE VIVIENDA</string>
     <string name="lblECorreo">CORREO ELÉCTRONICO *</string>
     <string name="lbltelDomicilio">TELÉFONO DE CASA *</string>
+    <string name="lbltelCelDomicilio">TELÉFONO CELULAR *</string>
     <string name="companiaMovil">COMPAÑÍA MÓVIL *</string>
 
 

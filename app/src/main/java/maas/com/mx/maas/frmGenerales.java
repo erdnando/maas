@@ -21,8 +21,11 @@ import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ import android.os.Bundle;
 public class frmGenerales extends Activity  {
 //Erdnando1 github
     String idSolicitud="0";
+    int total=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +50,11 @@ public class frmGenerales extends Activity  {
             Intent i= getIntent();
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
             Negocio negocio = new Negocio(getApplicationContext());
-
             cargaCatalogos();
             configuraCalendario();
             configuraRfc();
+            configuraControlesRequeridos();
+            validaEstatus();
 
            if(!this.idSolicitud.toString().equals("0")){
                getActionBar().setTitle(this.idSolicitud.toString());
@@ -67,9 +72,200 @@ public class frmGenerales extends Activity  {
         }
     }
 
-    private void configuraRfc() {
+    private void configuraControlesRequeridos() {
 
-        //EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
+        EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
+        txtNumIdentificacionGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        rdoRadioHombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        RadioButton rdoRadioMujer = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        rdoRadioMujer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+
+        EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
+        txtRFCGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
+        txtCalleDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+
+        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
+        txtNoExteriorDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
+        txtCpDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+
+        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
+        txtTiempoResidDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
+        txtECorreoDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
+        txtTelDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
+        txtCelDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    validaEstatus();
+                }
+            }
+        });
+
+
+
+    }
+
+    private void validaEstatus() {
+
+        TextView lblAvance = (TextView) findViewById(R.id.lblAvance);
+
+        //14 requeridos
+        total=0;
+
+        EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
+        total+= getPointAvance(txtNombreSolicitanteGeneral.getText().toString().trim());
+
+        EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
+        total+= getPointAvance(txtPaternoGeneral.getText().toString().trim());
+
+        EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
+        total+= getPointAvance(txtMaternoGeneral.getText().toString().trim());
+
+        EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
+        total+= getPointAvance(txtNumIdentificacionGeneral.getText().toString().trim());
+
+        RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        total+= getPointAvance(rdoRadioHombre.isChecked()==true?"true":"");
+
+        RadioButton rdoRadioMujer = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        total+= getPointAvance(rdoRadioMujer.isChecked() ==true?"true":"");
+
+        EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
+        total+= getPointAvance(txtRFCGeneral.getText().toString().trim());
+
+        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
+        total+= getPointAvance(txtCalleDomicilio.getText().toString().trim());
+
+        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
+        total+= getPointAvance(txtNoExteriorDomicilio.getText().toString().trim());
+
+        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
+        total+= getPointAvance(txtCpDomicilio.getText().toString().trim());
+
+        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
+        total+= getPointAvance(txtTiempoResidDomicilio.getText().toString().trim());
+
+        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
+        total+= getPointAvance(txtECorreoDomicilio.getText().toString().trim());
+
+        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
+        total+= getPointAvance(txtTelDomicilio.getText().toString().trim());
+
+        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
+        total+= getPointAvance(txtCelDomicilio.getText().toString().trim());
+
+        ImageButton imgEstatusGrales = (ImageButton) findViewById(R.id.imgEstatusGrales);
+        if((total*100/14)>=100){
+            imgEstatusGrales.setImageResource(R.drawable.complete);
+            imgEstatusGrales.setBackgroundColor(Color.TRANSPARENT);
+
+        }else{
+            imgEstatusGrales.setImageResource(R.drawable.incomplete);
+            imgEstatusGrales.setBackgroundColor(Color.TRANSPARENT);
+        }
+
+        lblAvance.setText(Integer.toString(total*100/14)+"%");
+    }
+
+    private int getPointAvance(String valor) {
+
+        if(valor.trim().length()>0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+
+
+    }
+
+    private void configuraRfc() {
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
         txtNombreSolicitanteGeneral.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -77,6 +273,7 @@ public class frmGenerales extends Activity  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     generaRFC();
+                    validaEstatus();
                 }
             }
         });
@@ -87,6 +284,7 @@ public class frmGenerales extends Activity  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     generaRFC();
+                    validaEstatus();
                 }
             }
         });
@@ -97,23 +295,10 @@ public class frmGenerales extends Activity  {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     generaRFC();
+                    validaEstatus();
                 }
             }
         });
-
-       // DatePicker dateFechaNacGeneralX = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
-
-
-//implements DatePicker.OnDateChangedListener
-
-       /* dateFechaNacGeneralX.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    generaRFC();
-                }
-            }
-        });*/
 
 
     }
@@ -221,6 +406,7 @@ public class frmGenerales extends Activity  {
                         EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
 
                         txtNumIdentificacionGeneral.setText("");
+                        validaEstatus();
 
                         if (value.equals("2496")) {//ife
                             txtNumIdentificacionGeneral.setFilters(new InputFilter[] { new InputFilter.LengthFilter(13) });
