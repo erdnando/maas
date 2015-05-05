@@ -2,6 +2,7 @@ package maas.com.mx.maas.entidades;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -32,11 +33,6 @@ import maas.com.mx.maas.negocio.Negocio;
 /**
  * Created by damserver on 22/04/2015.
  */
-
-
-
-
-
 public class DataGridLayout extends RelativeLayout {
 
     public final String TAG = "DataGridLayout.java";
@@ -68,11 +64,13 @@ public class DataGridLayout extends RelativeLayout {
 
     int headerCellsWidth[] = new int[headers.length];
 
+
     public DataGridLayout(Context context,ArrayList<Solicitud> _solicitudes) {
 
         super(context);
 
         this.context = context;
+
         this.solicitudes = _solicitudes;
         this.sampleObjects = this.headers();
         // initialize the main components (TableLayouts, HorizontalScrollView, ScrollView)
@@ -105,19 +103,12 @@ public class DataGridLayout extends RelativeLayout {
         this.generateTableC_AndTable_B();
 
         this.resizeBodyTableRowHeight();
-
-
     }
 
     // this is just the sample data
     List<Header> headers(){
         List<Header> sampleObjectsx = new ArrayList<Header>();
         try {
-            //Negocio negocio=new Negocio(this.context);
-
-            //ArrayList<Solicitud> solicitudes=negocio.getSolicitudes();
-
-
             for (Solicitud sol: solicitudes) {
 
                 Header sampleObject = new Header(
@@ -131,10 +122,8 @@ public class DataGridLayout extends RelativeLayout {
                 sampleObjectsx.add(sampleObject);
             }
         }catch(Exception ex){
-String h="";
+                 String h="";
             }
-
-
         return sampleObjectsx;
 
     }
@@ -155,7 +144,6 @@ String h="";
 
         this.tableA.setBackgroundColor(Color.LTGRAY);
         this.horizontalScrollViewB.setBackgroundColor(Color.LTGRAY);
-
     }
 
     // set essential component IDs
@@ -210,6 +198,7 @@ String h="";
 
     // generate table row of table A--Estatus/ID Solicitud headers
     TableRow componentATableRow(){
+
         GradientDrawable gd=null;
         gd = new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] {
                 Color.parseColor("#003D7A"), Color.parseColor("#035DB7"), Color.parseColor("#003D7A") });
@@ -273,10 +262,6 @@ String h="";
 
             componentBTableRow.addView(textView);
         }
-
-
-
-
         return componentBTableRow;
     }
 
@@ -314,14 +299,12 @@ String h="";
         textView.setText(sampleObject.header1);
         textView.setBackgroundColor(Color.WHITE);
         textView.setGravity(Gravity.CENTER);
-        //textView.setPadding(15, 5, 15, 5);//left-top-right-bottom
-
         //------------------------------------------------------
         // prepare
-        int strokeWidth = 6; // 3px not dp
-        int roundRadius = 25; // 8px not dp
-        int fillColor=0;// = Color.parseColor("#FF0000");//rojo
-        int strokeColor = Color.parseColor("#FFFFFF");//blanco
+        int strokeWidth = 6;
+        int roundRadius = 25;
+        int fillColor=0;
+        int strokeColor = Color.parseColor("#FFFFFF");
 
         Colores c=Colores.valueOf(textView.getText().toString());
 
@@ -367,6 +350,7 @@ String h="";
                     Intent myIntent = new Intent(v.getContext(), frmNuevaSolicitud.class);
 
                     myIntent.putExtra("idSolicitud", ((TableRow) v).getChildAt(1).getTag().toString()  );
+                    myIntent.putExtra("objSolicitud", "db" );
                     myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 

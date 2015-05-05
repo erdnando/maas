@@ -2,7 +2,9 @@ package maas.com.mx.maas;
 
 import android.app.Activity;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,11 +28,15 @@ public class frmBandeja extends Activity {
     String compania= "";
     String logeado= "";
     String tipousuario= "";
+    //SharedPreferences preferences=null;
+    //Solicitud objSol=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frmbandeja);
+
+       // preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
        // setContentView(new DataGridLayout(this));
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);

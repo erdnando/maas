@@ -477,4 +477,31 @@ public class sql extends SQLiteOpenHelper {
 
         return regreso;
     }
+
+    public Solicitud GetSolicitud(String idSolicitud, String tipo) {
+        Solicitud sol=new Solicitud();
+       // Solicitud sol;
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor c=db.rawQuery("select SOLICITUD_XML from BUZON_"+tipo+"  WHERE ID_SOLICITUD="+idSolicitud, null);
+        while (c.moveToNext())
+        {
+            sol.SolicitudXML=c.getString(0)==null?"":c.getString(0);
+        }
+        c.close();
+
+
+        /*ID_SOLICITUD integer primary key not null,"
+                + "FECHA_ALTA datetime,"
+                + "ESTATUS integer,"
+                + "ID_USUARIO integer,"
+                + "COMENTARIO varchar(500),"
+                + "MOTIVO integer,"
+                + "FECHA_MODIFICACION datetime,"
+                + "SOLICITUD_XML text"*/
+
+
+        return sol;
+    }
 }

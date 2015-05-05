@@ -17,4 +17,6 @@ public class Solicitud {
 
     public String FechaModificacion;
     public String SolicitudXML;
+    public String Paterno;
+    public String Materno;
 }

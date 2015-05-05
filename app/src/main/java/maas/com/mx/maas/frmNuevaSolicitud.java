@@ -23,73 +23,53 @@ import maas.com.mx.maas.negocio.Negocio;
 
 public class frmNuevaSolicitud extends Activity {
 
+    SharedPreferences preferences=null;
+    Solicitud objSol=null;
+    String idSolicitud="0";
+    String objSolicitud="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frmnuevasolicitud);
+        preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
 
         try{
-           // Intent i= getIntent();
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
-            Negocio negocio = new Negocio(getApplicationContext());
 
-            SharedPreferences prfs = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
-            String _idSolicitud = prfs.getString("idSolicitud", "");
+            if(this.idSolicitud==null) {
+                this.idSolicitud = preferences.getString("idSolicitud", "");
+            }
 
-            //aqui debe decir de donde viene, 1o de menu principal y luego de generales
-            String strObjSol = prfs.getString("strObjSol", "");
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("idSolicitud", this.idSolicitud);
+            editor.apply();
+
             Gson gson = new Gson();
-            Solicitud objSol=gson.fromJson(strObjSol, Solicitud.class);
-            //aqui debe llegar elobjeto cargado
-
-            if(_idSolicitud==null)return;
-            if(this.idSolicitud==null){
-                this.idSolicitud=_idSolicitud;
-            }
-
-             //---------------------------------------
-            SharedPreferences preferencesxx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
-            SharedPreferences.Editor editorxx = preferencesxx.edit();
-            //Gson gson = new Gson();
-           // Solicitud objSol=new Solicitud();
-            objSol.Color="Azul";
-            strObjSol = gson.toJson(objSol);
-            editorxx.putString("strObjSol", strObjSol);
-            editorxx.apply();
-            //---------------------------------
+            if(!this.idSolicitud.toString().equals("0")) {
+                getActionBar().setTitle(this.idSolicitud.toString());
 
 
-            //update selected solicitud
-            if(!this.idSolicitud.toString().equals("0")){
-                 if(_idSolicitud!=this.idSolicitud){
-                     _idSolicitud=this.idSolicitud;
-
-                     SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
-                     SharedPreferences.Editor editor = preferencesx.edit();
-                     editor.putString("idSolicitud",this.idSolicitud.toString());
-                     editor.apply();
-                 }
-            }else{
-                return;
-            }
-
-            if(!_idSolicitud.equalsIgnoreCase(""))
-            {
-                this.idSolicitud=_idSolicitud;
-                if(!this.idSolicitud.toString().equals("0")){
-                  getActionBar().setTitle(this.idSolicitud.toString());
-                }
+                objSol=new Solicitud();
+                //get from db .......
+                this.objSolicitud = gson.toJson(objSol);
+                editor.putString("objSolicitud", this.objSolicitud);
+                editor.apply();
 
             }else{
-                //si no existe la sharedpreference, hay q crearla
-                if(!this.idSolicitud.toString().equals("0")){
-                    getActionBar().setTitle(this.idSolicitud.toString());
+                this.objSolicitud = preferences.getString("objSolicitud", "");
+                if(this.objSolicitud==""){
+                    objSol=new Solicitud();
+                    this.objSolicitud = gson.toJson(objSol);
 
-                    SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
-                    SharedPreferences.Editor editor = preferencesx.edit();
-                    editor.putString("idSolicitud",this.idSolicitud.toString());
+                    editor.putString("objSolicitud", this.objSolicitud);
                     editor.apply();
+                }else{
+                    objSol=gson.fromJson(this.objSolicitud, Solicitud.class);
+                    String h="";
                 }
+
+
             }
 
         }catch(Exception ex){
@@ -97,7 +77,6 @@ public class frmNuevaSolicitud extends Activity {
         }
     }
 
-    String idSolicitud="0";
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -142,7 +121,7 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaDocumentos(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmDocumentos.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
-
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
         startActivity(myIntent);
     }
@@ -150,7 +129,7 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaRefFamiliares(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmRefFamiliares.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
-
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
         startActivity(myIntent);
     }
@@ -158,7 +137,7 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaPersonaPol(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmPersonaPol.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
-
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
         startActivity(myIntent);
     }
@@ -166,7 +145,7 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaDatosEco(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmDatosEco.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
-
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
         startActivity(myIntent);
     }
@@ -174,7 +153,7 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaDomicilio(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmDomicilio.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
-
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
         startActivity(myIntent);
     }
@@ -182,9 +161,20 @@ public class frmNuevaSolicitud extends Activity {
     public void navegaGenerales(View view) {
         Intent myIntent = new Intent(frmNuevaSolicitud.this, frmGenerales.class);
         myIntent.putExtra("idSolicitud",this.idSolicitud);
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
 
        startActivity(myIntent);
     }
 
+    @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
 
+   /* @Override
+    protected void onPause() {
+        super.onPause();
+
+
+    }*/
 }

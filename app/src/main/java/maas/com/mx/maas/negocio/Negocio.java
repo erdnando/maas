@@ -568,4 +568,8 @@ public class Negocio  {
         return r.generarRfc(persona);
 
     }
+
+    public Solicitud getSolicitud(String idSolicitud)throws Exception {
+        return db.GetSolicitud(idSolicitud,GetBuzonActivo().toString());
+    }
 }

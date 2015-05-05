@@ -45,6 +45,8 @@ public class frmMenuPrincipal extends Activity {
     String compania= "";
     String logeado= "";
     String tipousuario= "";
+    SharedPreferences preferences=null;
+    //Solicitud objSol=null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +54,17 @@ public class frmMenuPrincipal extends Activity {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.frmmenuprincipal);
+
+
+        preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
+        //clear objects preferences
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("objSolicitud", "");
+        editor.putString("idSolicitud", "0");
+        editor.apply();
+
+
 
         try{
             //Intent i= getIntent();
@@ -104,26 +117,24 @@ public class frmMenuPrincipal extends Activity {
     }
 
     public void btnNewsolicitud(View view) {
+
         Intent myIntent = new Intent(frmMenuPrincipal.this, frmNuevaSolicitud.class);
         myIntent.putExtra("idSolicitud","0");
 
+        //----------------------------------------------------------------------------------------------------------
+        //SharedPreferences.Editor editor = preferences.edit();
+        //editor.putString("idSolicitud","0");
 
-        SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
-        SharedPreferences.Editor editor = preferencesx.edit();
-        editor.putString("idSolicitud","0");
-
-        Gson gson = new Gson();
-        Solicitud objSol=new Solicitud();
-        objSol.Nombre="Erdnando";
+       /* Gson gson = new Gson();
+        objSol=new Solicitud();
+        objSol.IdSolicitud ="0";
         String strObjSol = gson.toJson(objSol);
 
         editor.putString("strObjSol", strObjSol);
-
-        editor.apply();
+        editor.apply();*/
+        //----------------------------------------------------------------------------------------------------------
 
         startActivity(myIntent);
-
-       // startActivity(new Intent(frmMenuPrincipal.this, frmNuevaSolicitud.class));
     }
 
     public void btnSalir(View view) {

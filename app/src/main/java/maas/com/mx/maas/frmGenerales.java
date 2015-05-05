@@ -46,20 +46,21 @@ public class frmGenerales extends Activity  {
 //Erdnando1 github
     String idSolicitud="0";
     int total=0;
+    SharedPreferences preferences=null;
+    Solicitud objSol=null;
+    String objSolicitud="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frmgenerales);
 
         try{
-            Intent i= getIntent();
+           // Intent i= getIntent();
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
+            this.objSolicitud=getIntent().getStringExtra("objSolicitud");
             //-------------------------------------------------
-            SharedPreferences prfs = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
-            String _idSolicitud = prfs.getString("idSolicitud", "");
-            String strObjSol = prfs.getString("strObjSol", "");
-            Gson gson = new Gson();
-            Solicitud objSol=gson.fromJson(strObjSol, Solicitud.class);
+            preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
             //----------------------------------------------
 
             Negocio negocio = new Negocio(getApplicationContext());
@@ -67,35 +68,58 @@ public class frmGenerales extends Activity  {
             configuraCalendario();
             configuraRfc();
             configuraControlesRequeridos();
+
+            Gson gson = new Gson();
+
+            //just from bandeja scenario
+            if(objSolicitud=="db"){
+                objSol=negocio.getSolicitud(this.idSolicitud);
+            }
+
+            objSol=gson.fromJson(objSolicitud, Solicitud.class);
+            cargaFormulario(objSol);
+
             validaEstatus();
-
-
-
-            SharedPreferences preferencesx = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
-            SharedPreferences.Editor editor = preferencesx.edit();
-            editor.putString("erdnando","generales");
-
-            objSol.Comentario="hasta generales";
-            strObjSol = gson.toJson(objSol);
-            editor.putString("strObjSol", strObjSol);
-
-            editor.apply();
-
 
            if(!this.idSolicitud.toString().equals("0")){
                getActionBar().setTitle(this.idSolicitud.toString());
-
-
-               //recrea solicitud
-               //..........
             }
-            else{
-               //nueva solicitud
-               //..........
-           }
+
         }catch(Exception ex){
             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void cargaFormulario(Solicitud objSol) {
+
+        EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
+        txtNombreSolicitanteGeneral.setText(objSol.Nombre);
+        EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
+        txtPaternoGeneral.setText(objSol.Paterno);
+        EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
+        txtMaternoGeneral.setText(objSol.Materno);
+        EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
+
+        RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
+
+        RadioButton rdoRadioMujer = (RadioButton) findViewById(R.id.rdoRadioHombre);
+
+        EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
+
+        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
+
+        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
+
+        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
+
+        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
+
+        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
+
+        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
+
+        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
+
     }
 
     private void configuraControlesRequeridos() {
@@ -622,7 +646,44 @@ public class frmGenerales extends Activity  {
    }
 
 
+    @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        objSol=getLastVersion(objSol);
+        this.objSolicitud = gson.toJson(objSol);
+        editor.putString("objSolicitud", this.objSolicitud);
+        editor.apply();
+    }
+
+    private Solicitud getLastVersion(Solicitud objSol) {
+
+        EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
+        EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
+        EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
+        EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
+        RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        RadioButton rdoRadioMujer = (RadioButton) findViewById(R.id.rdoRadioHombre);
+        EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
+        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
+        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
+        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
+        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
+        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
+        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
+        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
+        objSol.Nombre=txtNombreSolicitanteGeneral.getText().toString().toUpperCase();
+        objSol.Paterno=txtPaternoGeneral.getText().toString().toUpperCase();
+        objSol.Materno=txtMaternoGeneral.getText().toString().toUpperCase();
+
+        return objSol;
+    }
 
 }
