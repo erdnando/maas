@@ -48,6 +48,7 @@ import maas.com.mx.maas.entidades.RArgs;
 import maas.com.mx.maas.entidades.RegistroBuzon;
 import maas.com.mx.maas.entidades.RegistroImagen;
 import maas.com.mx.maas.entidades.Solicitud;
+import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.entidades.Usuario;
 import maas.com.mx.maas.entidades.objectItem;
 
@@ -569,7 +570,7 @@ public class Negocio  {
 
     }
 
-    public Solicitud getSolicitud(String idSolicitud)throws Exception {
-        return db.GetSolicitud(idSolicitud,GetBuzonActivo().toString());
+    public SolicitudType getSolicitud(String idSolicitud)throws Exception {
+        return db.GetSolicitud(idSolicitud, GetBuzonActivo().toString());
     }
 }

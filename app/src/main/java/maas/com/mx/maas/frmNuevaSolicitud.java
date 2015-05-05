@@ -19,12 +19,13 @@ import com.google.gson.Gson;
 
 import maas.com.mx.maas.R;
 import maas.com.mx.maas.entidades.Solicitud;
+import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.negocio.Negocio;
 
 public class frmNuevaSolicitud extends Activity {
 
     SharedPreferences preferences=null;
-    Solicitud objSol=null;
+    SolicitudType objSol=null;
     String idSolicitud="0";
     String objSolicitud="";
 
@@ -50,7 +51,7 @@ public class frmNuevaSolicitud extends Activity {
                 getActionBar().setTitle(this.idSolicitud.toString());
 
 
-                objSol=new Solicitud();
+                objSol=new SolicitudType();
                 //get from db .......
                 this.objSolicitud = gson.toJson(objSol);
                 editor.putString("objSolicitud", this.objSolicitud);
@@ -59,13 +60,13 @@ public class frmNuevaSolicitud extends Activity {
             }else{
                 this.objSolicitud = preferences.getString("objSolicitud", "");
                 if(this.objSolicitud==""){
-                    objSol=new Solicitud();
+                    objSol=new SolicitudType();
                     this.objSolicitud = gson.toJson(objSol);
 
                     editor.putString("objSolicitud", this.objSolicitud);
                     editor.apply();
                 }else{
-                    objSol=gson.fromJson(this.objSolicitud, Solicitud.class);
+                    objSol=gson.fromJson(this.objSolicitud, SolicitudType.class);
                     String h="";
                 }
 

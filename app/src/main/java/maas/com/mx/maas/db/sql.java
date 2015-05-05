@@ -28,6 +28,7 @@ import maas.com.mx.maas.entidades.CatalogoX;
 import maas.com.mx.maas.entidades.Productos;
 import maas.com.mx.maas.entidades.RegistroBuzon;
 import maas.com.mx.maas.entidades.Solicitud;
+import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.entidades.Usuario;
 import maas.com.mx.maas.entidades.objectItem;
 
@@ -478,30 +479,47 @@ public class sql extends SQLiteOpenHelper {
         return regreso;
     }
 
-    public Solicitud GetSolicitud(String idSolicitud, String tipo) {
-        Solicitud sol=new Solicitud();
-       // Solicitud sol;
+    public SolicitudType GetSolicitud(String idSolicitud, String tipo) {
+        SolicitudType objSol=new SolicitudType();
+        //Solicitud sol=new Solicitud();
+        String strXml="";
 
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase sql = getReadableDatabase();
 
-        Cursor c=db.rawQuery("select SOLICITUD_XML from BUZON_"+tipo+"  WHERE ID_SOLICITUD="+idSolicitud, null);
+        Cursor c=sql.rawQuery("select SOLICITUD_XML from BUZON_"+tipo+"  WHERE ID_SOLICITUD="+idSolicitud, null);
         while (c.moveToNext())
         {
-            sol.SolicitudXML=c.getString(0)==null?"":c.getString(0);
+            strXml=c.getString(0)==null?"":c.getString(0);
         }
         c.close();
 
 
-        /*ID_SOLICITUD integer primary key not null,"
-                + "FECHA_ALTA datetime,"
-                + "ESTATUS integer,"
-                + "ID_USUARIO integer,"
-                + "COMENTARIO varchar(500),"
-                + "MOTIVO integer,"
-                + "FECHA_MODIFICACION datetime,"
-                + "SOLICITUD_XML text"*/
+        if (!strXml.trim().equals("")) {
+            String xml = strXml.replace("xmlns=\"http://schemas.datacontract.org/2004/07/Originacion.Entidades\"", "");
+
+            InputSource source = new InputSource(new StringReader(xml));
+            try {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                DocumentBuilder db = dbf.newDocumentBuilder();
+                Document document = db.parse(source);
+
+                XPathFactory xpathFactory = XPathFactory.newInstance();
+                XPath xpath = xpathFactory.newXPath();
+
+                objSol.generales.Pmrnombre = xpath.evaluate("/SolicitudType/generales/Pmrnombre", document);
+                objSol.generales.Sdonombre = xpath.evaluate("/SolicitudType/generales/Sdonombre", document);
+                objSol.generales.Apaterno = xpath.evaluate("/SolicitudType/generales/Apaterno", document);
+                objSol.generales.Amaterno = xpath.evaluate("/SolicitudType/generales/Amaterno", document);
 
 
-        return sol;
+
+            }catch(Exception ex){
+
+            }
+
+
+        }
+
+        return objSol;
     }
 }

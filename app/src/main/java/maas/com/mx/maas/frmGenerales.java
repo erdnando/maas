@@ -35,6 +35,7 @@ import java.util.Calendar;
 
 import maas.com.mx.maas.entidades.MySpinnerAdapter;
 import maas.com.mx.maas.entidades.Solicitud;
+import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.entidades.objectItem;
 import maas.com.mx.maas.negocio.Negocio;
 import android.os.AsyncTask;
@@ -47,7 +48,7 @@ public class frmGenerales extends Activity  {
     String idSolicitud="0";
     int total=0;
     SharedPreferences preferences=null;
-    Solicitud objSol=null;
+    SolicitudType objSol=null;
     String objSolicitud="";
 
     @Override
@@ -76,7 +77,7 @@ public class frmGenerales extends Activity  {
                 objSol=negocio.getSolicitud(this.idSolicitud);
             }
 
-            objSol=gson.fromJson(objSolicitud, Solicitud.class);
+            objSol=gson.fromJson(objSolicitud, SolicitudType.class);
             cargaFormulario(objSol);
 
             validaEstatus();
@@ -90,14 +91,14 @@ public class frmGenerales extends Activity  {
         }
     }
 
-    private void cargaFormulario(Solicitud objSol) {
+    private void cargaFormulario(SolicitudType objSol) {
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
-        txtNombreSolicitanteGeneral.setText(objSol.Nombre);
+        txtNombreSolicitanteGeneral.setText(objSol.generales.Pmrnombre);
         EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
-        txtPaternoGeneral.setText(objSol.Paterno);
+        txtPaternoGeneral.setText(objSol.generales.Apaterno);
         EditText txtMaternoGeneral = (EditText) findViewById(R.id.txtMaternoGeneral);
-        txtMaternoGeneral.setText(objSol.Materno);
+        txtMaternoGeneral.setText(objSol.generales.Amaterno);
         EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
 
         RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
@@ -663,7 +664,7 @@ public class frmGenerales extends Activity  {
         editor.apply();
     }
 
-    private Solicitud getLastVersion(Solicitud objSol) {
+    private SolicitudType getLastVersion(SolicitudType objSol) {
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
         EditText txtPaternoGeneral = (EditText) findViewById(R.id.txtPaternoGeneral);
@@ -679,9 +680,9 @@ public class frmGenerales extends Activity  {
         EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
         EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
         EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
-        objSol.Nombre=txtNombreSolicitanteGeneral.getText().toString().toUpperCase();
-        objSol.Paterno=txtPaternoGeneral.getText().toString().toUpperCase();
-        objSol.Materno=txtMaternoGeneral.getText().toString().toUpperCase();
+        objSol.generales.Pmrnombre=txtNombreSolicitanteGeneral.getText().toString().toUpperCase();
+        objSol.generales.Apaterno=txtPaternoGeneral.getText().toString().toUpperCase();
+        objSol.generales.Amaterno=txtMaternoGeneral.getText().toString().toUpperCase();
 
         return objSol;
     }

@@ -17,13 +17,14 @@ import com.google.gson.Gson;
 
 import maas.com.mx.maas.R;
 import maas.com.mx.maas.entidades.Solicitud;
+import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.negocio.Negocio;
 
 public class frmDomicilio extends Activity {
     String idSolicitud="0";
     int total=0;
     SharedPreferences preferences=null;
-    Solicitud objSol=null;
+    SolicitudType objSol=null;
     String objSolicitud="";
 
     @Override
@@ -44,7 +45,7 @@ public class frmDomicilio extends Activity {
             //configuraControlesRequeridos();
 
             Gson gson = new Gson();
-            objSol=gson.fromJson(objSolicitud, Solicitud.class);
+            objSol=gson.fromJson(objSolicitud, SolicitudType.class);
             cargaFormulario(objSol);
             validaEstatus();
 
@@ -57,7 +58,7 @@ public class frmDomicilio extends Activity {
         }
     }
 
-    private void cargaFormulario(Solicitud objSol) {
+    private void cargaFormulario(SolicitudType objSol) {
 
     }
 
