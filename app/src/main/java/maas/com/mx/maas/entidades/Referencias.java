@@ -5,6 +5,10 @@ package maas.com.mx.maas.entidades;
  */
 public class Referencias extends Generales {
 
+    public Referencias(){
+        this.Noreferencia="";
+        this.TelefonoCasa="";
+    }
     public String Noreferencia;
 
     public String TelefonoCasa;

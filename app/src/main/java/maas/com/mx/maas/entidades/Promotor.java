@@ -6,6 +6,18 @@ import org.apache.http.HttpEntity;
  * Created by damserver on 14/04/2015.
  */
 public class Promotor {
+
+    public Promotor(){
+        this.Compania="";
+        this.Contrasenia="";
+        this.Formato="";
+        this.Promotoria="";
+        this.RegPromotor="";
+        this.TipoUsuario="";
+        this.Usuario="";
+    }
+
+
     public String Compania;
     public String Contrasenia;
     public String Formato;
@@ -13,12 +25,4 @@ public class Promotor {
     public String RegPromotor;
     public String TipoUsuario;
     public String Usuario;
-
-/*
-    public void setCompania(String _compania) {
-        this.Compania = _compania;
-    }
-    public String getCompania() {
-        return this.Compania;
-    }*/
 }

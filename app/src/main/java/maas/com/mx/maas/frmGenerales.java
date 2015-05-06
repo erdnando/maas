@@ -22,11 +22,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
-
 import java.util.Calendar;
-
 import maas.com.mx.maas.entidades.MySpinnerAdapter;
 import maas.com.mx.maas.entidades.SolicitudType;
 import maas.com.mx.maas.entidades.objectItem;
@@ -39,7 +36,7 @@ public class frmGenerales extends Activity  {
     SharedPreferences preferences=null;
     SolicitudType objSol=null;
     String objSolicitud="";
-    Boolean againEstado;
+
     Boolean againIdentificacion;
 
 
@@ -51,18 +48,16 @@ public class frmGenerales extends Activity  {
         try{
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
             this.objSolicitud=getIntent().getStringExtra("objSolicitud");
-            //-------------------------------------------------
+
             preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
-            //----------------------------------------------
+
             cargaCatalogos();
             configuraRfc();
             configuraControlesRequeridos();
 
             Gson gson = new Gson();
-
             objSol=gson.fromJson(objSolicitud, SolicitudType.class);
 
-            againEstado=false;
             againIdentificacion=false;
             //recrea solicitud
             cargaFormulario(objSol);
@@ -120,71 +115,12 @@ public class frmGenerales extends Activity  {
         EditText txtNumDependienteGeneral = (EditText) findViewById(R.id.txtNumDependienteGeneral);
         txtNumDependienteGeneral.setText(objSol.generales.Nodependiente);
 
-        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
-        txtCalleDomicilio.setText(objSol.domicilio.Calle);
-
-        EditText txtNoInteriorDomicilio = (EditText) findViewById(R.id.txtNoInteriorDomicilio);
-        txtNoInteriorDomicilio.setText(objSol.domicilio.NoInt);
-
-        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
-        txtNoExteriorDomicilio.setText(objSol.domicilio.NoExt);
-
-        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
-        txtCpDomicilio.setText(objSol.domicilio.Cpdom);
-
-        Spinner cboEstdoDomicilio = (Spinner) findViewById(R.id.cboEstdoDomicilio);
-        SelectSpinnerItemByValue(cboEstdoDomicilio, objSol.domicilio.Estado );
-
-
-        try {
-            String selectedId = objSol.domicilio.Estado;
-            Negocio negocio = new Negocio(getApplicationContext());
-            Spinner cboDelegMunicipio = (Spinner) findViewById(R.id.cboDelegMunicipio);
-            cboDelegMunicipio.setAdapter(null);
-
-            String catActivo=negocio.GetBuzonActivo().toString();
-
-            objectItem[] cboitems;
-            cboitems = negocio.CargarCatalogoDelegMunicipio(catActivo, selectedId);
-            MySpinnerAdapter dataAdapter = new MySpinnerAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, cboitems);
-            cboDelegMunicipio.setAdapter(dataAdapter);
-        }catch(Exception ex){
-
-        }
-
-
-        Spinner cboDelegMunicipio = (Spinner) findViewById(R.id.cboDelegMunicipio);
-        SelectSpinnerItemByValue(cboDelegMunicipio, objSol.domicilio.Delegacion );
-
-        EditText txtColDomicilio = (EditText) findViewById(R.id.txtColDomicilio);
-        txtColDomicilio.setText(objSol.domicilio.Colonia);
-
-        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
-        txtTiempoResidDomicilio.setText(objSol.domicilio.TiempoResidencia);
-
-        Spinner cboEstatusResidenciaDomicilio = (Spinner) findViewById(R.id.cboEstatusResidenciaDomicilio);
-        SelectSpinnerItemByValue(cboEstatusResidenciaDomicilio, objSol.domicilio.EstatusResidencia );
-
-        EditText txtMontoViviendaDomicilio = (EditText) findViewById(R.id.txtMontoViviendaDomicilio);
-        txtMontoViviendaDomicilio.setText(objSol.domicilio.MontoVivienda);
-
-        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
-        txtECorreoDomicilio.setText(objSol.domicilio.Email);
-
-        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
-        txtTelDomicilio.setText(objSol.domicilio.Telcasa);
-
-        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
-        txtCelDomicilio.setText(objSol.domicilio.Telmovil);
 
 
 
     }
 
-
-
-    public static void SelectSpinnerItemByValue(Spinner spnr, String value)
-    {
+    public static void SelectSpinnerItemByValue(Spinner spnr, String value){
         MySpinnerAdapter adapter = (MySpinnerAdapter) spnr.getAdapter();
         for (int position = 0; position < adapter.getCount(); position++)
         {
@@ -240,87 +176,13 @@ public class frmGenerales extends Activity  {
             }
         });
 
-        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
-        txtCalleDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-
-        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
-        txtNoExteriorDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
-        txtCpDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-
-        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
-        txtTiempoResidDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
-        txtECorreoDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
-        txtTelDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
-        txtCelDomicilio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    validaEstatus();
-                }
-            }
-        });
-
-
-
     }
-
+    //valida requeridos
     private void validaEstatus() {
 
         TextView lblAvance = (TextView) findViewById(R.id.lblAvance);
 
-        //12 requeridos
+        //5 requeridos
         total=0;
 
         EditText txtNombreSolicitanteGeneral = (EditText) findViewById(R.id.txtNombreSolicitanteGeneral);
@@ -335,47 +197,23 @@ public class frmGenerales extends Activity  {
         EditText txtNumIdentificacionGeneral = (EditText) findViewById(R.id.txtNumIdentificacionGeneral);
         total+= getPointAvance(txtNumIdentificacionGeneral.getText().toString().trim());
 
-        /*RadioButton rdoRadioHombre = (RadioButton) findViewById(R.id.rdoRadioHombre);
-        total+= getPointAvance(rdoRadioHombre.isChecked()==true?"true":"");
-
-        RadioButton rdoRadioMujer = (RadioButton) findViewById(R.id.rdoRadioHombre);
-        total+= getPointAvance(rdoRadioMujer.isChecked() ==true?"true":"");*/
-
         EditText txtRFCGeneral = (EditText) findViewById(R.id.txtRFCGeneral);
         total+= getPointAvance(txtRFCGeneral.getText().toString().trim());
 
-        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
-        total+= getPointAvance(txtCalleDomicilio.getText().toString().trim());
-
-        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
-        total+= getPointAvance(txtNoExteriorDomicilio.getText().toString().trim());
-
-        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
-        total+= getPointAvance(txtCpDomicilio.getText().toString().trim());
-
-        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
-        total+= getPointAvance(txtTiempoResidDomicilio.getText().toString().trim());
-
-        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
-        total+= getPointAvance(txtECorreoDomicilio.getText().toString().trim());
-
-        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
-        total+= getPointAvance(txtTelDomicilio.getText().toString().trim());
-
-        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
-        total+= getPointAvance(txtCelDomicilio.getText().toString().trim());
 
         ImageButton imgEstatusGrales = (ImageButton) findViewById(R.id.imgEstatusGrales);
-        if((total*100/12)>=100){
+        if((total*100/5)>=100){
             imgEstatusGrales.setImageResource(R.drawable.complete);
             imgEstatusGrales.setBackgroundColor(Color.TRANSPARENT);
+
 
         }else{
             imgEstatusGrales.setImageResource(R.drawable.incomplete);
             imgEstatusGrales.setBackgroundColor(Color.TRANSPARENT);
+
         }
 
-        lblAvance.setText(Integer.toString(total*100/12)+"%");
+        lblAvance.setText(Integer.toString(total*100/5)+"%");
     }
 
     private int getPointAvance(String valor) {
@@ -475,8 +313,7 @@ public class frmGenerales extends Activity  {
 
     }
 
-    private String getNumero(int day)
-    {
+    private String getNumero(int day){
         if (day < 10) return "0" + Integer.toString(day);
         else return Integer.toString(day);
     }
@@ -508,28 +345,6 @@ public class frmGenerales extends Activity  {
             Calendar c = Calendar.getInstance();
             dpResult.init(c.get(Calendar.YEAR)-18, c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH), onDateChanged);
         }
-    }
-
-
-    private void configuraCalendario() {
-
-        DatePicker dpResult = (DatePicker) findViewById(R.id.dateFechaNacGeneralX);
-        dpResult.setCalendarViewShown(false);
-
-        DatePicker.OnDateChangedListener onDateChanged=new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int i, int i2, int i3) {
-                AsyncTaskGeneraRFC runner = new AsyncTaskGeneraRFC();
-                runner.execute("");
-            }
-        };
-
-        Calendar c = Calendar.getInstance();
-        dpResult.init(c.get(Calendar.YEAR)-18, c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH), onDateChanged);
-
-
-        dpResult.init(Integer.valueOf(year), Integer.valueOf(month ), Integer.valueOf(day), onDateChanged);
-
     }
 
     private void cargaCatalogos() {
@@ -588,65 +403,12 @@ public class frmGenerales extends Activity  {
             MySpinnerAdapter dataAdapter9 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems9);
             cboNacionalGeneral.setAdapter(dataAdapter9);
 
-
             //EstadoCivil
             Spinner cboEdoCivilGeneral = (Spinner) findViewById(R.id.cboEdoCivilGeneral);
             objectItem[]  cboitems3;
             cboitems3 = negocio.CargarCatalogoComun("3");
             MySpinnerAdapter dataAdapter3 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems3);
             cboEdoCivilGeneral.setAdapter(dataAdapter3);
-
-            //Estados
-            Spinner cboEstdoDomicilio = (Spinner) findViewById(R.id.cboEstdoDomicilio);
-            objectItem[]  cboitems5;
-            cboitems5 = negocio.CargarCatalogoComun("5");
-            MySpinnerAdapter dataAdapter5 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems5);
-            cboEstdoDomicilio.setAdapter(dataAdapter5);
-
-
-            cboEstdoDomicilio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
-                    if(againEstado==false){againEstado=true;return;}
-
-                    try {
-                        String selectedId = ((objectItem)parentView.getItemAtPosition(position)).VALUE.toString();//parentView.getItemAtPosition(position).toString();
-                        Negocio negocio = new Negocio(getApplicationContext());
-                        Spinner cboDelegMunicipio = (Spinner) findViewById(R.id.cboDelegMunicipio);
-                        cboDelegMunicipio.setAdapter(null);
-
-                        String catActivo=negocio.GetBuzonActivo().toString();
-
-                        objectItem[] cboitems;
-                        cboitems = negocio.CargarCatalogoDelegMunicipio(catActivo, selectedId);
-                        MySpinnerAdapter dataAdapter = new MySpinnerAdapter(getApplicationContext(), android.R.layout.simple_spinner_item, cboitems);
-                        cboDelegMunicipio.setAdapter(dataAdapter);
-                    }catch(Exception ex){
-
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
-
-            //Estatus residencia domicilio
-            Spinner cboEstatusResidenciaDomicilio = (Spinner) findViewById(R.id.cboEstatusResidenciaDomicilio);
-            objectItem[]  cboitems4;
-            cboitems4 = negocio.CargarCatalogoComun("4");
-            MySpinnerAdapter dataAdapter4 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems4);
-            cboEstatusResidenciaDomicilio.setAdapter(dataAdapter4);
-
-            //Compania movil
-            Spinner cboCompaniaMovil = (Spinner) findViewById(R.id.cboCompaniaMovil);
-            objectItem[]  cboitems1;
-            cboitems1 = negocio.CargarCatalogoComun("1");
-            MySpinnerAdapter dataAdapter1 = new MySpinnerAdapter(getApplicationContext(),android.R.layout.simple_spinner_item, cboitems1);
-            cboCompaniaMovil.setAdapter(dataAdapter1);
 
         }catch (Exception ex){
 
@@ -687,7 +449,6 @@ public class frmGenerales extends Activity  {
             this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         }
     }
-
 
    private class AsyncTaskGeneraRFC extends AsyncTask<String, String, String> {
 
@@ -745,7 +506,6 @@ public class frmGenerales extends Activity  {
            // progress. For example updating ProgessDialog
        }
    }
-
 
     @Override
     public void onBackPressed() {
@@ -808,44 +568,6 @@ public class frmGenerales extends Activity  {
         EditText txtNumDependienteGeneral = (EditText) findViewById(R.id.txtNumDependienteGeneral);
         objSol.generales.Nodependiente=txtNumDependienteGeneral.getText().toString().toUpperCase();
 
-        EditText txtCalleDomicilio = (EditText) findViewById(R.id.txtCalleDomicilio);
-        objSol.domicilio.Calle=txtCalleDomicilio.getText().toString().toUpperCase();
-
-        EditText txtNoInteriorDomicilio = (EditText) findViewById(R.id.txtNoInteriorDomicilio);
-        objSol.domicilio.NoInt=txtNoInteriorDomicilio.getText().toString().toUpperCase();
-
-        EditText txtNoExteriorDomicilio = (EditText) findViewById(R.id.txtNoExteriorDomicilio);
-        objSol.domicilio.NoExt=txtNoExteriorDomicilio.getText().toString().toUpperCase();
-
-        EditText txtCpDomicilio = (EditText) findViewById(R.id.txtCpDomicilio);
-        objSol.domicilio.Cpdom=txtCpDomicilio.getText().toString().toUpperCase();
-
-        Spinner cboEstdoDomicilio = (Spinner) findViewById(R.id.cboEstdoDomicilio);
-        objSol.domicilio.Estado= ((objectItem) cboEstdoDomicilio.getSelectedItem()).VALUE;
-
-        Spinner cboDelegMunicipio = (Spinner) findViewById(R.id.cboDelegMunicipio);
-        objSol.domicilio.Delegacion= ((objectItem) cboDelegMunicipio.getSelectedItem()).VALUE;
-
-        EditText txtColDomicilio = (EditText) findViewById(R.id.txtColDomicilio);
-        objSol.domicilio.Colonia=txtColDomicilio.getText().toString().toUpperCase();
-
-        EditText txtTiempoResidDomicilio = (EditText) findViewById(R.id.txtTiempoResidDomicilio);
-        objSol.domicilio.TiempoResidencia=txtTiempoResidDomicilio.getText().toString().toUpperCase();
-
-        Spinner cboEstatusResidenciaDomicilio = (Spinner) findViewById(R.id.cboEstatusResidenciaDomicilio);
-        objSol.domicilio.EstatusResidencia= ((objectItem) cboEstatusResidenciaDomicilio.getSelectedItem()).VALUE;
-
-        EditText txtMontoViviendaDomicilio = (EditText) findViewById(R.id.txtMontoViviendaDomicilio);
-        objSol.domicilio.MontoVivienda=txtMontoViviendaDomicilio.getText().toString().toUpperCase();
-
-        EditText txtECorreoDomicilio = (EditText) findViewById(R.id.txtECorreoDomicilio);
-        objSol.domicilio.Email=txtECorreoDomicilio.getText().toString().toUpperCase();
-
-        EditText txtTelDomicilio = (EditText) findViewById(R.id.txtTelDomicilio);
-        objSol.domicilio.Telcasa=txtTelDomicilio.getText().toString().toUpperCase();
-
-        EditText txtCelDomicilio = (EditText) findViewById(R.id.txtCelDomicilio);
-        objSol.domicilio.Telmovil=txtCelDomicilio.getText().toString().toUpperCase();
 
 
         return objSol;

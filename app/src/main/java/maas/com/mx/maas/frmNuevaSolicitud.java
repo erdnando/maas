@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +65,12 @@ public class frmNuevaSolicitud extends Activity {
                 this.objSolicitud = gson.toJson(objSol);
                 editor.putString("objSolicitud", this.objSolicitud);
                 editor.apply();
+
+                setEstatus(objSol);
+
+                }else{
+                    objSol=gson.fromJson(this.objSolicitud, SolicitudType.class);
+                    setEstatus(objSol);
                 }
 
             }else{
@@ -74,9 +81,12 @@ public class frmNuevaSolicitud extends Activity {
 
                     editor.putString("objSolicitud", this.objSolicitud);
                     editor.apply();
+
+                    setEstatus(objSol);
                 }else{
                     objSol=gson.fromJson(this.objSolicitud, SolicitudType.class);
                     String h="";
+                    setEstatus(objSol);
                 }
 
 
@@ -86,6 +96,18 @@ public class frmNuevaSolicitud extends Activity {
             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
+    private void setEstatus(SolicitudType objSol) {
+      ImageButton imgValidaGrales=  (ImageButton) findViewById(R.id.imgValidaGrales);
+        if(objSol.getEstatusGrales()==1)imgValidaGrales.setImageResource(R.drawable.complete);
+        else imgValidaGrales.setImageResource(R.drawable.incomplete);
+
+        ImageButton imgValidadomicilio=  (ImageButton) findViewById(R.id.imgValidadomicilio);
+        if(objSol.getEstatusdomicilio()==1)imgValidadomicilio.setImageResource(R.drawable.complete);
+        else imgValidadomicilio.setImageResource(R.drawable.incomplete);
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

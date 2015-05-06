@@ -37,11 +37,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidaGrales"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 
@@ -67,11 +68,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidadomicilio"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 
@@ -97,11 +99,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidaDatosEco"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 
@@ -127,11 +130,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidaPersonaPol"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 
@@ -157,11 +161,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidaRefFamiliares"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 
@@ -187,11 +192,12 @@
 
             <ImageButton
                 android:id="@+id/imgValidaDocumentos"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="-35dp"
-                android:src="@drawable/warning"
-                android:scaleType="centerCrop"
+                android:src="@drawable/incomplete"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="-4dp" />
         </LinearLayout>
 

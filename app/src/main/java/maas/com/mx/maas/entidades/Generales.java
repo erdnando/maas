@@ -5,9 +5,26 @@ package maas.com.mx.maas.entidades;
  */
 public class Generales {
 
+    public Generales(){
+        this.Tpoidentif="";
+        this.Noidenficacion="";
+        this.Pmrnombre="";
+        this.Sdonombre="";
+        this.Apaterno="";
+        this.Amaterno="";
+        this.Sexo="";
+        this.Nacionalidad="";
+        this.Fechanacdia="";
+        this.Rfc="";
+        this.Edocivil="";
+        this.Nodependiente="";
+        this.Cveperspol="";
+        this.FechasnacMes="";
+        this.FechanacAnio="";
+    }
+
     public String Tpoidentif;
 
-    
     public String Noidenficacion;
 
     

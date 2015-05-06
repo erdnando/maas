@@ -59,9 +59,10 @@ public class frmMenuPrincipal extends Activity {
         preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_WORLD_WRITEABLE);
         //clear objects preferences
         SharedPreferences.Editor editor = preferences.edit();
-
+        //reset variables
         editor.putString("objSolicitud", "");
         editor.putString("idSolicitud", "0");
+
         editor.apply();
 
 
