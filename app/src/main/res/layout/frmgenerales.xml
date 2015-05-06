@@ -252,7 +252,7 @@
             android:layout_marginTop="20dp"
             android:maxLength="50"
             android:inputType="text"
-            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ- "
             android:hint="@string/lblCalle"/>
 
         <EditText
@@ -266,7 +266,7 @@
             android:layout_marginTop="20dp"
             android:maxLength="50"
             android:inputType="text"
-            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ- "
             android:hint="@string/lblNoInt"/>
 
         <EditText
@@ -280,7 +280,7 @@
             android:layout_marginTop="20dp"
             android:maxLength="50"
             android:inputType="text"
-            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ- "
             android:hint="@string/lblNoExt"/>
 
         <EditText
@@ -332,7 +332,7 @@
             android:layout_marginTop="20dp"
             android:maxLength="50"
             android:inputType="text"
-            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ"
+            android:digits="0,1,2,3,4,5,6,7,8,9,qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNMáéíóúÁÉÍÓÚ- "
             android:hint="@string/lblColonia"/>
 
         <EditText
