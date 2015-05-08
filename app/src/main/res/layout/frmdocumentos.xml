@@ -85,7 +85,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto" />
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/btnIdentificacion1"
@@ -118,7 +119,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/btnIdentificacion2"
@@ -195,7 +197,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/btnContrato1"
@@ -229,7 +232,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/btnContrato2"
@@ -303,7 +307,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/extraPath1"
@@ -336,7 +341,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/extraPath2"
@@ -369,7 +375,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/extraPath3"
@@ -402,7 +409,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/extraPath4"
@@ -435,7 +443,8 @@
                     android:adjustViewBounds="false"
                     android:background="@layout/webcam_style"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickPhoto"/>
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/extraPath5"

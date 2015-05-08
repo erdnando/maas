@@ -35,12 +35,20 @@ public class frmDocumentos extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frmdocumentos);
+        preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
 
         try{
             countExtras=0;
 
             this.idSolicitud= getIntent().getStringExtra("idSolicitud");
             this.objSolicitud=getIntent().getStringExtra("objSolicitud");
+
+            if(this.idSolicitud==null) {
+                this.idSolicitud = preferences.getString("idSolicitud", "");
+            }
+            if(this.objSolicitud==null) {
+                this.objSolicitud = preferences.getString("objSolicitud", "");
+            }
 
             preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
 
@@ -196,5 +204,14 @@ public class frmDocumentos extends Activity {
     private SolicitudType getLastVersion(SolicitudType objSol) {
 
         return objSol;
+    }
+
+    public void clickPhoto(View view) {
+
+        Intent myIntent = new Intent(frmDocumentos.this, frmPhoto.class);
+        myIntent.putExtra("idSolicitud",this.idSolicitud);
+        myIntent.putExtra("objSolicitud",this.objSolicitud);
+
+        startActivity(myIntent);
     }
 }

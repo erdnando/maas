@@ -54,7 +54,7 @@
             android:icon="@drawable/logostefanini"
             android:label="@string/nuevasolicitud"
             android:parentActivityName=".frmMenuPrincipal"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmMenuPrincipal" />
@@ -62,10 +62,10 @@
         <activity
             android:name=".frmConfiguracion"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/configuracion"
-            android:parentActivityName=".frmMenuPrincipal" >
+            android:parentActivityName=".frmMenuPrincipal"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmMenuPrincipal" />
@@ -73,10 +73,10 @@
         <activity
             android:name=".frmGenerales"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/Generales"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
@@ -84,10 +84,10 @@
         <activity
             android:name=".frmDomicilio"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/Domicilio"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
@@ -95,10 +95,10 @@
         <activity
             android:name=".frmDatosEco"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/Datos_eco"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
@@ -106,10 +106,10 @@
         <activity
             android:name=".frmPersonaPol"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/PersonaPol"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
@@ -117,10 +117,10 @@
         <activity
             android:name=".frmRefFamiliares"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/RefFamiliares"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
@@ -128,13 +128,24 @@
         <activity
             android:name=".frmDocumentos"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
             android:icon="@drawable/logostefanini"
             android:label="@string/Documentos"
-            android:parentActivityName=".frmNuevaSolicitud">
+            android:parentActivityName=".frmNuevaSolicitud"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="frmNuevaSolicitud" />
+        </activity>
+        <activity
+            android:name=".frmPhoto"
+            android:configChanges="orientation"
+            android:icon="@drawable/logostefanini"
+            android:label="Foto"
+            android:parentActivityName=".frmDocumentos"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmDocumentos" />
         </activity>
     </application>
 
