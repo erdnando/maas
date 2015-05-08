@@ -5,18 +5,456 @@
     android:layout_height="fill_parent"
     tools:context="maas.com.mx.maas.frmDocumentos">
 
-    <TableLayout android:id="@+id/Body"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/fondo"
-        android:layout_gravity="fill"
-        android:clickable="true"
-        android:focusableInTouchMode="true"
-        android:onClick="hideSoftKeyboard"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/agrupa">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Documentos"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/textView"
+            android:layout_marginTop="10dp"
+            android:textColor="#003D7A"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0%"
+            android:id="@+id/lblAvance"
+            android:textColor="@drawable/negro"
+            android:textAlignment="gravity"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_marginLeft="-20dp" />
+
+
+        <ImageButton
+            android:id="@+id/imgEstatusGrales"
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/incomplete"
+            android:scaleType="centerInside"
+            android:contentDescription="Estatus"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="5dp" />
+
+    </LinearLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
         >
 
+        <TableLayout android:id="@+id/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo"
+            android:layout_gravity="fill"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
+            android:onClick="hideSoftKeyboard"
+            >
+            <!--all here-->
+            <Space android:layout_width="30dp" android:layout_height="35dp" />
 
-    </TableLayout>
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Identificación (Frente)" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/btnCamIF"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/btnIdentificacion1"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Identificación (Atras)" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/btnCamIA"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/btnIdentificacion2"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Firma" android:layout_weight="1"
+                    android:singleLine="true"></TextView>
+                <ImageButton
+                    android:id="@+id/btnFirma"
+                    android:layout_width="25dp"
+                    android:layout_height="35dp"
+                    android:background="@layout/firma_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/btnFirmaX"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+
+                <ImageButton
+                    android:id="@+id/btnPrepara"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:background="@layout/prepara_style"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="8dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Contrato (Parte 1)" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/btnCamP1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/btnContrato1"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Contrato (Parte 2)" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/btnCamP2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/btnContrato2"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow6"
+                android:layout_height="40dp"
+                android:layout_width="match_parent">
+
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <Space android:layout_width="10dp" android:layout_height="35dp" android:layout_weight="1"/>
+                <Space android:layout_width="10dp" android:layout_height="35dp" android:layout_weight="1"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/agrupa1">
+                    <Space android:layout_width="25dp" android:layout_height="15dp" />
+                    <ImageButton
+                        android:id="@+id/btnAgregar"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerInside"
+                        android:contentDescription="Estatus"
+                        android:adjustViewBounds="false"
+                        android:background="@layout/mas_style"
+                        android:layout_weight="1"
+                        android:clickable="true" />
+                    <Space android:layout_width="20dp" android:layout_height="15dp" />
+                    <ImageButton
+                        android:id="@+id/btnQuitar"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:scaleType="centerInside"
+                        android:contentDescription="Estatus"
+                        android:adjustViewBounds="false"
+                        android:background="@layout/menos_style"
+                        android:layout_weight="1"
+                        android:clickable="true" />
+                    <Space android:layout_width="25dp" android:layout_height="15dp" />
+                </LinearLayout>
+
+                <Space android:layout_width="30dp" android:layout_height="35dp" android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow7"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:visibility="invisible">
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Extra 1" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/extraCam1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/extraPath1"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow8"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:visibility="invisible">
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Extra 2" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/extraCam2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/extraPath2"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow9"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:visibility="invisible">
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Extra 3" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/extraCam3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/extraPath3"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow10"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:visibility="invisible">
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Extra 4" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/extraCam4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@layout/webcam_style"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/extraPath4"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow11"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:visibility="invisible">
+                <Space android:layout_width="10dp" android:layout_height="35dp" />
+                <TextView android:text="Extra 5" android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_height="40dp"></TextView>
+                <ImageButton
+                    android:id="@+id/extraCam5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="centerInside"
+                    android:contentDescription="Estatus"
+                    android:adjustViewBounds="false"
+                    android:background="@layout/webcam_style"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+                <Button
+                    android:layout_height="25dp"
+                    android:id="@+id/extraPath5"
+                    android:text="................................................"
+                    android:background="@layout/button_style"
+                    android:textColor="@drawable/blanco"
+                    android:layout_weight="1"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="true" />
+                <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
+            </TableRow>
+
+            <Space android:layout_width="300dp" android:layout_height="150dp" />
+
+        </TableLayout>
+
+    </ScrollView>
 
     <TableLayout android:id="@+id/Footer"
         android:layout_width="fill_parent"

@@ -30,7 +30,7 @@ public class frmPersonaPol extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frmdatoseco);
+        setContentView(R.layout.frmpersonapol);
 
         try{
             Intent i= getIntent();

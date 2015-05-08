@@ -30,7 +30,7 @@ public class frmRefFamiliares extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frmdatoseco);
+        setContentView(R.layout.frmreffamiliares);
 
         try{
             Intent i= getIntent();
