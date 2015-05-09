@@ -218,6 +218,9 @@ public class sql extends SQLiteOpenHelper {
         }*/
 
         for(RegistroBuzon item: buzonDesdeWs){
+
+            item.COMENTARIO=item.COMENTARIO==null?"":item.COMENTARIO;
+            if(item.ID_SOLICITUD==null)continue;
             db.execSQL("INSERT INTO  BUZON_"+buzon+"(ID_SOLICITUD,COMENTARIO,ESTATUS,SOLICITUD_XML,FECHA_MODIFICACION) VALUES("
                     +item.ID_SOLICITUD.toString() +",'"+item.COMENTARIO.toString()+"',"+item.ESTATUS.toString()+",'"+item.SOLICITUD_XML.toString() +"','"+item.FECHA_MODIFICACION.toString()+"')");
         }

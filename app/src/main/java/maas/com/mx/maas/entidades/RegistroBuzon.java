@@ -4,6 +4,25 @@ package maas.com.mx.maas.entidades;
  * Created by damserver on 17/04/2015.
  */
 public class RegistroBuzon {
+
+    public RegistroBuzon(){
+        this.COORDINADOR="";
+        this.GERENTE="";
+        this.PROMOTOR="";
+        this.ID_SOLICITUD="";
+        this.ESTATUS="";
+        this.FECHA_ALTA="";
+        this.SOLICITUD_XML="";
+        this.VALIDADOR="";
+        this.FECHA_MODIFICACION="";
+        this.VALIDADO_POR="";
+        this.NOMBRE_CLIENTE="";
+        this.COMENTARIO="";
+
+        this.doc=new Documento();
+
+    }
+
     public String COORDINADOR;
     public String GERENTE;
     public String PROMOTOR;

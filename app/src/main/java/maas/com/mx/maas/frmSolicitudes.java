@@ -31,6 +31,7 @@ public class frmSolicitudes extends Activity {
 
 
         File imgFile = new File("/data/data/maas.com.mx.maas/files/TEC_635641112357191956.jpg");
+                                //data/data/maas.com.mx.maas/files/TEC_gbkte24ta6j483274nnccogblt.jpg
 
         if(imgFile.exists()){
 

@@ -97,7 +97,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnIdentificacion1" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 

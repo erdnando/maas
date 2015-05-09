@@ -249,11 +249,11 @@ public class DataGridLayout extends RelativeLayout {
         for(int x=0; x<(headerFieldCount-2); x++){
             TextView textView = this.headerTextView(this.headers[x+2]);
             textView.setLayoutParams(params);
-
+            //ANCHOS
             switch(x+2){
-                case 2:textView.setWidth(230);break;
-                case 3:textView.setWidth(180);break;
-                case 4:textView.setWidth(330);break;
+                case 2:textView.setWidth(350);break;//NOMBRE
+                case 3:textView.setWidth(180);break;//FECHA
+                case 4:textView.setWidth(430);break;//COMENTARIO
             }
 
             textView.setTextColor(Color.WHITE);
@@ -319,6 +319,8 @@ public class DataGridLayout extends RelativeLayout {
                     Color.parseColor("#BDBDBD"), Color.parseColor("#A4A4A4"), Color.WHITE });textView.setText("");textView.setWidth(25);break;
             case Blue: gd =new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] {
                     Color.parseColor("#0174DF"), Color.parseColor("#2E9AFE"), Color.WHITE });textView.setText("");textView.setWidth(25);break;
+            case Green: gd =new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[] {
+                    Color.parseColor("#7CFC00"), Color.parseColor("#458B00"), Color.WHITE });textView.setText("");textView.setWidth(25);break;
         }
         //textView.setPadding(2,20,2,20);//top/right/bottom/left
 
@@ -367,7 +369,7 @@ public class DataGridLayout extends RelativeLayout {
     }
 
     private enum Colores {
-        Red, Blue, Yellow, Gray;
+        Red, Blue, Yellow, Gray, Green;
     }
 
 
@@ -437,11 +439,12 @@ public class DataGridLayout extends RelativeLayout {
         int tableAChildCount = ((TableRow)this.tableA.getChildAt(0)).getChildCount();
         int tableBChildCount = ((TableRow)this.tableB.getChildAt(0)).getChildCount();
 
-        this.headerCellsWidth[0]=100;
-        this.headerCellsWidth[1]=120;
-        this.headerCellsWidth[2]=230;
-        this.headerCellsWidth[3]=180;
-        this.headerCellsWidth[4]=330;
+        //ANCHOS
+        this.headerCellsWidth[0]=100;//COLOR
+        this.headerCellsWidth[1]=120;//ID SOL
+        this.headerCellsWidth[2]=350;//NOMBRE
+        this.headerCellsWidth[3]=180;//FECHA
+        this.headerCellsWidth[4]=430;//COMENTARIO
         /*for(int x=0; x<(tableAChildCount+tableBChildCount); x++){
 
             if(x<2){
