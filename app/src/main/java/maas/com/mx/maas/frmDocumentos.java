@@ -229,34 +229,6 @@ public class frmDocumentos extends Activity {
 
     public void clickPhoto(View view) {
 
-       /* Intent myIntent = new Intent(frmDocumentos.this, frmPhoto.class);
-        myIntent.putExtra("idSolicitud",this.idSolicitud);
-        myIntent.putExtra("objSolicitud",this.objSolicitud);
-
-        startActivity(myIntent);*/
-        //String pathTaget=getApplicationContext().getFilesDir().getPath().toString();
-        //imageName="TEC_" + System.currentTimeMillis() + ".jpg";
-
-        //Uri newImageUri = null;
-        //path = new File(pathTaget);
-
-        /*if (!path.exists())
-            path.mkdirs();
-
-        boolean setWritable = false;
-        setWritable = path.setWritable(true, false);
-        path.setReadable(true,false);
-        path.setExecutable(true,false);
-
-        File file = new File(path, imageName);//ok
-        newImageUri = Uri.fromFile(file);
-
-        file.setWritable(true, false);
-        file.setReadable(true,false);
-        file.setExecutable(true,false);
-
-        str_Camera_Photo_ImagePath = pathTaget + "/" + imageName;*/
-
         File photoFile = null;
         try {
             photoFile = createImageFile();
@@ -265,7 +237,6 @@ public class frmDocumentos extends Activity {
         }
 
         Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        //takePictureIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, newImageUri);
         if (photoFile != null) {
             imageName=photoFile.getName();
             mCurrentPhotoPath=photoFile.getAbsolutePath();
@@ -273,15 +244,9 @@ public class frmDocumentos extends Activity {
             startActivityForResult(takePictureIntent, Take_Photo);
         }
 
-       /* if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, Take_Photo);
-        }*/
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-       // super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == Take_Photo && resultCode == RESULT_OK) {
 
@@ -289,37 +254,7 @@ public class frmDocumentos extends Activity {
             btnIdentificacion1.setText(imageName);
             btnIdentificacion1.setTag(mCurrentPhotoPath);
 
-            //Bundle extras = data.getExtras();
-            //Bitmap imageBitmap = (Bitmap) extras.get("data");
 
-            //File myfile=new File( getApplicationContext().getFilesDir().getPath().toString(),imageName);
-            //Bitmap myBitmap = BitmapFactory.decodeFile(myfile.getAbsolutePath());//imgFile.getAbsolutePath());
-            //Bitmap faceView = ( new_decode(new File( getApplicationContext().getFilesDir().getPath().toString(),imageName)));
-            //String h="";
-            //btnIdentificacion1.setTag(imageName);
-           /* String filePath = null;
-
-            filePath = str_Camera_Photo_ImagePath;
-
-            File imgFile = new File(str_Camera_Photo_ImagePath);
-
-            if(imgFile.exists()){
-
-                myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-                //ImageView imageView1 = (ImageView) findViewById(R.id.imageViewTest);
-               // imageView1.setImageBitmap(myBitmap);
-
-            }*/
-
-            /*
-            if (filePath != null) {
-                Bitmap faceView = ( new_decode(new File(
-                        filePath))); // ========================> good lines
-                imageView.setImageBitmap(faceView);
-
-            } else {
-                bitmap = null;
-            }*/
         }
     }
 
