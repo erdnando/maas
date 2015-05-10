@@ -81,5 +81,6 @@
     <string name="lbltelCelDomicilio">TELÉFONO CELULAR *</string>
     <string name="companiaMovil">COMPAÑÍA MÓVIL *</string>
     <string name="title_activity_frm_photo">frmPhoto</string>
+    <string name="title_activity_frm_sing">frmSing</string>
 
 </resources>

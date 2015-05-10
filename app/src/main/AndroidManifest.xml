@@ -142,6 +142,17 @@
             android:icon="@drawable/logostefanini"
             android:label="Foto"
             android:parentActivityName=".frmDocumentos"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frmDocumentos" />
+        </activity>
+        <activity
+            android:name=".frmSing"
+            android:configChanges="orientation"
+            android:icon="@drawable/logostefanini"
+            android:label="Firma"
+            android:parentActivityName=".frmDocumentos"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -153,10 +164,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
-
 
 </manifest>

@@ -227,32 +227,126 @@ public class frmDocumentos extends Activity {
         return objSol;
     }
 
-    public void clickPhoto(View view) {
+
+    public void clickFirma(View v) {
+
+        Intent myIntent = new Intent(frmDocumentos.this, frmSing.class);
+       /* myIntent.putExtra("User",this.user);
+        myIntent.putExtra("Compania",this.compania);
+        myIntent.putExtra("Logeado",this.logeado);
+        myIntent.putExtra("Tipo_Usuario",this.tipousuario);*/
+
+        startActivityForResult(myIntent,1);
+    }
+
+    public void clickPhoto(View v) {
+        int btnInvocador=0;
+        switch(v.getId()) {
+            case R.id.btnCamIF:
+                btnInvocador=101;
+                break;
+            case R.id.btnCamIA:
+                btnInvocador=102;
+                break;
+            case R.id.btnCamP1:
+                btnInvocador=103;
+                break;
+            case R.id.btnCamP2:
+                btnInvocador=104;
+                break;
+            case R.id.extraCam1:
+                btnInvocador=105;
+                break;
+            case R.id.extraCam2:
+                btnInvocador=106;
+                break;
+            case R.id.extraCam3:
+                btnInvocador=107;
+                break;
+            case R.id.extraCam4:
+                btnInvocador=108;
+                break;
+            case R.id.extraCam5:
+                btnInvocador=109;
+                break;
+        }
+
 
         File photoFile = null;
         try {
-            photoFile = createImageFile();
+                photoFile = createImageFile();
+
+                Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                if (photoFile != null) {
+                    imageName=photoFile.getName();
+                    mCurrentPhotoPath=photoFile.getAbsolutePath();
+                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(photoFile));
+                    startActivityForResult(takePictureIntent, btnInvocador);
+                }
         } catch (IOException ex) {
             // Error occurred while creating the File
-        }
-
-        Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        if (photoFile != null) {
-            imageName=photoFile.getName();
-            mCurrentPhotoPath=photoFile.getAbsolutePath();
-            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(photoFile));
-            startActivityForResult(takePictureIntent, Take_Photo);
         }
 
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == Take_Photo && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
 
-            Button btnIdentificacion1 = (Button) findViewById(R.id.btnIdentificacion1);
-            btnIdentificacion1.setText(imageName);
-            btnIdentificacion1.setTag(mCurrentPhotoPath);
+            Button btnFirmaX = (Button) findViewById(R.id.btnFirmaX);
+            btnFirmaX.setText(imageName);
+            btnFirmaX.setTag(mCurrentPhotoPath);
+
+        }else if (requestCode >100 && resultCode == RESULT_OK) {
+
+            switch (requestCode){
+                case 101:
+                    Button btnIdentificacion1 = (Button) findViewById(R.id.btnIdentificacion1);
+                    btnIdentificacion1.setText(imageName);
+                    btnIdentificacion1.setTag(mCurrentPhotoPath);
+                    break;
+                case 102:
+                    Button btnIdentificacion2 = (Button) findViewById(R.id.btnIdentificacion2);
+                    btnIdentificacion2.setText(imageName);
+                    btnIdentificacion2.setTag(mCurrentPhotoPath);
+                    break;
+                case 103:
+                    Button btnContrato1 = (Button) findViewById(R.id.btnContrato1);
+                    btnContrato1.setText(imageName);
+                    btnContrato1.setTag(mCurrentPhotoPath);
+                    break;
+                case 104:
+                    Button btnContrato2 = (Button) findViewById(R.id.btnContrato2);
+                    btnContrato2.setText(imageName);
+                    btnContrato2.setTag(mCurrentPhotoPath);
+                    break;
+                case 105:
+                    Button extraPath1 = (Button) findViewById(R.id.extraPath1);
+                    extraPath1.setText(imageName);
+                    extraPath1.setTag(mCurrentPhotoPath);
+                    break;
+                case 106:
+                    Button extraPath2 = (Button) findViewById(R.id.extraPath2);
+                    extraPath2.setText(imageName);
+                    extraPath2.setTag(mCurrentPhotoPath);
+                    break;
+                case 107:
+                    Button extraPath3 = (Button) findViewById(R.id.extraPath3);
+                    extraPath3.setText(imageName);
+                    extraPath3.setTag(mCurrentPhotoPath);
+                    break;
+                case 108:
+                    Button extraPath4 = (Button) findViewById(R.id.extraPath4);
+                    extraPath4.setText(imageName);
+                    extraPath4.setTag(mCurrentPhotoPath);
+                    break;
+                case 109:
+                    Button extraPath5 = (Button) findViewById(R.id.extraPath5);
+                    extraPath5.setText(imageName);
+                    extraPath5.setTag(mCurrentPhotoPath);
+                    break;
+            }
+
 
 
         }
@@ -260,10 +354,11 @@ public class frmDocumentos extends Activity {
 
     private File createImageFile() throws IOException {
         // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "TEC_" + timeStamp;
+
+        String imageFileName = "TEC_" ;//+ timeStamp;
         File storageDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
+        //tempfile asign unique name to file by self
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
@@ -276,17 +371,67 @@ public class frmDocumentos extends Activity {
     }
 
 
-    public void clickBtnIdentificacion1(View view) {
+    public void clickBtnShowImage(View v) {
 
-        Button btnIdentificacion1 = (Button) findViewById(R.id.btnIdentificacion1);
-        String strImage=btnIdentificacion1.getText().toString();
-        String strPath=btnIdentificacion1.getTag().toString();
+        String strImage=".............";
+        String strPath="";
 
-        Intent myIntent = new Intent(frmDocumentos.this, frmPhoto.class);
-        myIntent.putExtra("imageName",strImage);
-        myIntent.putExtra("strPath",strPath);
+        switch(v.getId()) {
+            case R.id.btnIdentificacion1:
+                Button btnIdentificacion1 = (Button) findViewById(R.id.btnIdentificacion1);
+                strImage=btnIdentificacion1.getText().toString();
+                strPath=btnIdentificacion1.getTag()==null?"":btnIdentificacion1.getTag().toString();
+                break;
+            case R.id.btnIdentificacion2:
+                Button btnIdentificacion2 = (Button) findViewById(R.id.btnIdentificacion2);
+                strImage=btnIdentificacion2.getText().toString();
+                strPath=btnIdentificacion2.getTag()==null?"":btnIdentificacion2.getTag().toString();
+                break;
+            case R.id.btnContrato1:
+                Button btnContrato1 = (Button) findViewById(R.id.btnContrato1);
+                strImage=btnContrato1.getText().toString();
+                strPath=btnContrato1.getTag()==null?"":btnContrato1.getTag().toString();
+                break;
+            case R.id.btnContrato2:
+                Button btnContrato2 = (Button) findViewById(R.id.btnContrato2);
+                strImage=btnContrato2.getText().toString();
+                strPath=btnContrato2.getTag()==null?"":btnContrato2.getTag().toString();
+                break;
+            case R.id.extraPath1:
+                Button extraPath1 = (Button) findViewById(R.id.extraPath1);
+                strImage=extraPath1.getText().toString();
+                strPath=extraPath1.getTag()==null?"":extraPath1.getTag().toString();
+                break;
+            case R.id.extraPath2:
+                Button extraPath2 = (Button) findViewById(R.id.extraPath2);
+                strImage=extraPath2.getText().toString();
+                strPath=extraPath2.getTag()==null?"":extraPath2.getTag().toString();
+                break;
+            case R.id.extraPath3:
+                Button extraPath3 = (Button) findViewById(R.id.extraPath3);
+                strImage=extraPath3.getText().toString();
+                strPath=extraPath3.getTag()==null?"":extraPath3.getTag().toString();
+                break;
+            case R.id.extraPath4:
+                Button extraPath4 = (Button) findViewById(R.id.extraPath4);
+                strImage=extraPath4.getText().toString();
+                strPath=extraPath4.getTag()==null?"":extraPath4.getTag().toString();
+                break;
+            case R.id.extraPath5:
+                Button extraPath5 = (Button) findViewById(R.id.extraPath5);
+                strImage=extraPath5.getText().toString();
+                strPath=extraPath5.getTag()==null?"":extraPath5.getTag().toString();
+                break;
+        }
 
-        startActivity(myIntent);
+
+              if(!strImage.toString().startsWith("...")){
+                Intent myIntent = new Intent(frmDocumentos.this, frmPhoto.class);
+                myIntent.putExtra("imageName",strImage);
+                myIntent.putExtra("strPath",strPath);
+
+                startActivity(myIntent);
+              }
 
     }
 

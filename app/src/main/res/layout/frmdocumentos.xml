@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
-                    android:onClick="clickBtnIdentificacion1" />
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -132,7 +132,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -153,7 +154,8 @@
                     android:contentDescription="Estatus"
                     android:adjustViewBounds="false"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:onClick="clickFirma" />
                 <Button
                     android:layout_height="25dp"
                     android:id="@+id/btnFirmaX"
@@ -164,7 +166,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
 
                 <ImageButton
                     android:id="@+id/btnPrepara"
@@ -210,7 +213,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -245,7 +249,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -320,7 +325,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -354,7 +360,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -388,7 +395,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -422,7 +430,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
@@ -456,7 +465,8 @@
                     android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:onClick="clickBtnShowImage" />
                 <Space android:layout_width="10dp" android:layout_height="25dp"  android:layout_weight="1"/>
             </TableRow>
 
