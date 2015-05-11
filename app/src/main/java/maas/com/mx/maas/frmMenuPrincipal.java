@@ -62,6 +62,9 @@ public class frmMenuPrincipal extends Activity {
         //reset variables
         editor.putString("objSolicitud", "");
         editor.putString("idSolicitud", "0");
+        editor.putString("imagenFirma", "................................................");
+        editor.putString("imagenFirmaPath", "");
+
 
         editor.apply();
 

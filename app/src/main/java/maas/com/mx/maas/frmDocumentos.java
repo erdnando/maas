@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,7 +72,10 @@ public class frmDocumentos extends Activity {
                 this.objSolicitud = preferences.getString("objSolicitud", "");
             }
 
-            preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
+            Button btnFirmaX = (Button) findViewById(R.id.btnFirmaX);
+            btnFirmaX.setText(preferences.getString("imagenFirma", "").toString());
+            btnFirmaX.setTag(preferences.getString("imagenFirmaPath", "").toString());
+            //preferences = getSharedPreferences("AUTHENTICATION_FILE_NAME", Context.MODE_PRIVATE);
 
             Negocio negocio = new Negocio(getApplicationContext());
             //metodos de inicializacion
@@ -347,6 +351,18 @@ public class frmDocumentos extends Activity {
                     break;
             }
 
+           try {
+                Bitmap b = BitmapFactory.decodeFile(mCurrentPhotoPath);
+                File imagefile = new File(mCurrentPhotoPath);
+                FileOutputStream fos = null;
+                fos = new FileOutputStream(imagefile);
+
+                b.compress(Bitmap.CompressFormat.JPEG, 85, fos);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
 
 
         }
@@ -364,6 +380,11 @@ public class frmDocumentos extends Activity {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
+
+      /*  Bitmap b = BitmapFactory.decodeFile(image.getAbsolutePath());
+        FileOutputStream fos = null;
+        fos = new FileOutputStream(image);
+        b.compress(Bitmap.CompressFormat.PNG, 95, fos);*/
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
@@ -421,6 +442,11 @@ public class frmDocumentos extends Activity {
                 Button extraPath5 = (Button) findViewById(R.id.extraPath5);
                 strImage=extraPath5.getText().toString();
                 strPath=extraPath5.getTag()==null?"":extraPath5.getTag().toString();
+                break;
+            case R.id.btnFirmaX:
+                Button btnFirmaX = (Button) findViewById(R.id.btnFirmaX);
+                strImage=btnFirmaX.getText().toString();
+                strPath=btnFirmaX.getTag()==null?"":btnFirmaX.getTag().toString();
                 break;
         }
 

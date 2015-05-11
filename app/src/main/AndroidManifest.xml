@@ -152,11 +152,7 @@
             android:configChanges="orientation"
             android:icon="@drawable/logostefanini"
             android:label="Firma"
-            android:parentActivityName=".frmDocumentos"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="frmDocumentos" />
         </activity>
     </application>
 
